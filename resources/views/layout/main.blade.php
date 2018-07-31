@@ -10,12 +10,11 @@
     <meta name="csrf-token" content="MESUY3topeHgvFqsy9EcM916UWQq6khiGHM91wHy">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>laravel for blog</title>
-    
+
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/blog.css">
-    <link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,21 +27,21 @@
   <body>
     @include('layout.nav')
     <div class="container">
-      <div class="blog-header"></div>
+      <div class="blog-header">
+      </div>
+
       <div class="row">
         @yield('content')
         @include('layout.sidebar')
       </div>    
-    </div><!-- /.row -->
-  </div><!-- /.container -->
-  @include('layout.footer')
+    </div><!-- /.container -->
+    @include('layout.footer')
 
-  <!---------------- Bootstrap core JavaScript ---------------->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/js/wangEditor/wangEditor.min.js"></script>
-  <script src="/js/ylaravel.js"></script>
-
-</body>
+    <!-- 
+          Bootstrap core JavaScript 
+          Placed at the end of the document so the pages load faster
+    -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
 </html>

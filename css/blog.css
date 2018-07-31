@@ -120,6 +120,19 @@ h6, .h6 {
 }
 
 
+/**
+ *  Editor Style
+ *
+ */
+#editor-menu {
+    width: 750px
+}
+#editor-content {
+    width: 760px; 
+    height: 600px; 
+    max-height: 1500px;
+}
+
 /* Pagination */
 .pager {
     margin-bottom: 60px;

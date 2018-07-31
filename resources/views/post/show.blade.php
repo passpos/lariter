@@ -3,18 +3,28 @@
 <div class="col-sm-8 blog-main">
   <div class="blog-post">
     <div style="display:inline-flex">
+      
+      <!-- 1. 标题 -->
       <h2 class="blog-post-title">{{$posts->title}}</h2>
+      
+      <!--实时编辑按钮-->
       <a style="margin: auto"  href="/posts/{{$posts->id}}/edit">
         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
       </a>
+      
+      <!--实时删除按钮-->
       <a style="margin: auto"  href="/posts/{{$posts->id}}/delete">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       </a>
+
     </div>
 
+    <!-- 2. 创作日期与作者-->
     <p class="blog-post-meta">{{$posts->created_at->toFormattedDateString()}}<a href="#">Kassandra Ankunding2</a></p>
-    <p>{{$posts->content}}</p>
-    
+
+    <!-- 3. 文章-->
+    <p>{!! $posts->content !!}</p>
+
     <div>
       <a href="/posts/{{$posts->id}}/zan" type="button" class="btn btn-primary btn-lg">赞</a>
 

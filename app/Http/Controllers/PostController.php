@@ -39,13 +39,15 @@ class PostController extends Controller {
         // 验证
         $this->validate(request(), [
             'title' => 'required|string|max:100|min:4',
-            'content' => 'required|string|max:7000|min:100',
+            'content' => 'required|string|max:15000|min:100',
         ]);
+
         // 逻辑
         $post = new Post();
         $post->title = request('title');
         $post->content = request('content');
         $post->save();
+
         // 用下面的代码一样可以实现写入文章到数据库
         // $params = ['title' => request('title'), 'content' => request('content')];
         // 或直接传递request()的参数数组
@@ -68,11 +70,21 @@ class PostController extends Controller {
     }
 
     //上传图片
-    public function upload() {
-        $path = $request
-                ->file('wangEditorH5File')
-                ->storePublicly(md5(time()));
-        return asset('storage/'.$path);
+    public function upload(Request $request) {
+        if ($request->hasFile('filename') && $request->file('filename')->isValid()) {
+            $photo = $request->file('filename');
+            $extension = $photo->extension();
+
+            $store_result = $photo->store('usrimg');
+            $output = [
+                'extension' => $extension,
+                'store_result' => $store_result
+            ];
+            print_r($output);
+            exit();
+        }
+        exit('未获取到上传文件或上传过程出错');
+        return asset('storage/'.);
     }
 
     //删除文章
