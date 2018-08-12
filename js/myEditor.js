@@ -4,6 +4,18 @@ KindEditor.ready(function (K) {
         cssPath: '../plugins/code/prettify.css',
         uploadJson: '/posts/upload',
         fileManagerJson: '../php/file_manager_json.php',
-        allowFileManager: true
+        allowFileManager: true,
+        afterCreate: function () {
+            var self = this;
+            K.ctrl(document, 13, function () {
+                self.sync();
+                K('form[name=example]')[0].submit();
+            });
+            K.ctrl(self.edit.doc, 13, function () {
+                self.sync();
+                K('form[name=example]')[0].submit();
+            });
+        }
     });
+    prettyPrint();
 });

@@ -60,17 +60,29 @@ class PostController extends Controller {
     }
 
     //编辑文章
-    public function edit() {
-        return view('post.');
+    public function edit(Post $post) {
+        return view('post/edit', compact('post'));
     }
 
     //更新文章
-    public function update() {
-        
+    public function update(Post $post) {
+        // 验证
+        $this->validate(request(), [
+            'title' => 'required|string|max:100|min:4',
+            'content' => 'required|string|max:15000|min:100',
+        ]);
+        // 逻辑
+        $post->title = request('title');
+        $post->content = request('content');
+        $post->save();
+        // 渲染
+        return redirect("/posts/{$post->id}");
     }
 
     //上传图片
-    public function upload(Request $request) {
+    public function uploadImage(Request $request) {
+
+        // TODO 图片上传与路径、返回
         if ($request->hasFile('filename') && $request->file('filename')->isValid()) {
             $photo = $request->file('filename');
             $extension = $photo->extension();
@@ -84,12 +96,14 @@ class PostController extends Controller {
             exit();
         }
         exit('未获取到上传文件或上传过程出错');
-        return asset('storage/'.);
+        return asset('storage/' . 'mbkgf');
     }
 
     //删除文章
-    public function delete() {
-        
+    public function delete(Post $post) {
+        // TODO:这里应该添加用户的权限认证
+        $post->delete();
+        return redirect("/posts");
     }
 
 }

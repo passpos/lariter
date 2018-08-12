@@ -16,6 +16,11 @@ $php_url = dirname($_SERVER['PHP_SELF']) . '/';
 $save_path = $php_path . '../attached/';
 //文件保存目录URL
 $save_url = $php_url . '../attached/';
+
+
+
+
+// 上传限定
 //定义允许上传的文件扩展名
 $ext_arr = array(
 	'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp'),
@@ -28,7 +33,12 @@ $max_size = 1000000;
 
 $save_path = realpath($save_path) . '/';
 
-//PHP上传失败
+
+
+
+
+
+//PHP上传失败信息
 if (!empty($_FILES['imgFile']['error'])) {
 	switch($_FILES['imgFile']['error']){
 		case '1':
@@ -59,18 +69,26 @@ if (!empty($_FILES['imgFile']['error'])) {
 	alert($error);
 }
 
-//有上传文件时
+
+
+
+
+// 有上传文件时
 if (empty($_FILES) === false) {
 	//原文件名
 	$file_name = $_FILES['imgFile']['name'];
 	//服务器上临时文件名
 	$tmp_name = $_FILES['imgFile']['tmp_name'];
+    
 	//文件大小
 	$file_size = $_FILES['imgFile']['size'];
+
+    
 	//检查文件名
 	if (!$file_name) {
 		alert("请选择文件。");
 	}
+
 	//检查目录
 	if (@is_dir($save_path) === false) {
 		alert("上传目录不存在。");
@@ -79,6 +97,7 @@ if (empty($_FILES) === false) {
 	if (@is_writable($save_path) === false) {
 		alert("上传目录没有写权限。");
 	}
+
 	//检查是否已上传
 	if (@is_uploaded_file($tmp_name) === false) {
 		alert("上传失败。");
@@ -101,6 +120,7 @@ if (empty($_FILES) === false) {
 	if (in_array($file_ext, $ext_arr[$dir_name]) === false) {
 		alert("上传文件扩展名是不允许的扩展名。\n只允许" . implode(",", $ext_arr[$dir_name]) . "格式。");
 	}
+    
 	//创建文件夹
 	if ($dir_name !== '') {
 		$save_path .= $dir_name . "/";
@@ -117,6 +137,7 @@ if (empty($_FILES) === false) {
 	}
 	//新文件名
 	$new_file_name = date("YmdHis") . '_' . rand(10000, 99999) . '.' . $file_ext;
+    
 	//移动文件
 	$file_path = $save_path . $new_file_name;
 	if (move_uploaded_file($tmp_name, $file_path) === false) {

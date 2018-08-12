@@ -29,7 +29,7 @@ Route::put('/posts/{post}', 'PostController@update')
         ->where('post', '[0-9]+');
 
 //上传图片
-Route::post('/posts/upload', 'PostController@upload');
+Route::post('/posts/upload/image', 'PostController@uploadImage');
 
 //删除文章
-Route::get('/posts/delete', 'PostController@delete');
+Route::get('/posts/{post}/delete', 'PostController@delete');
