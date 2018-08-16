@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>laravel for blog create</title>
+    <title>laravel for bloger</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
   <body>
     @include('layout.nav')
-    <div class="container">
+    <div class="bloger">
 
       <div class="blog-header"></div>
 

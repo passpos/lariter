@@ -102,7 +102,10 @@ h6, .h6 {
     font-size: 18px;
     line-height: 1.5;
 }
-
+.bloger {
+    margin: auto;
+    width: 850px;
+}
 /* Sidebar modules for boxing content */
 .sidebar-module {
     padding: 15px;
