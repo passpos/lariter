@@ -13,7 +13,12 @@ class LoginController extends Controller
     }
 
     // 登录行为
-    public function register() {
+    public function login() {
+        
+    }
+    
+    // 登出行为
+    public function logout() {
         
     }
 

@@ -14,14 +14,7 @@
     </textarea>
   </div>
 
-  <!--错误提示信息-->
-  @if(count($errors) > 0)
-  <div class="alert alert-danger" role="alert">
-    @foreach($errors->all() as $error)
-    <li>{{$error}}</li>
-    @endforeach
-  </div>
-  @endif
+  @include('layout.error')
 
   <!--提交按钮-->
   <button  id="passage-store" type="submit" class="btn btn-default">提交</button>

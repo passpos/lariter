@@ -31,10 +31,19 @@
 
     <div class="container">
 
-      <form class="form-signin" method="POST" action="/register">
+      <form class="form-signin" method="POST" action="/user/register">
         @csrf
         <h2 class="form-signin-heading">请注册</h2>
 
+        <!--
+        在表单提交中，提交的表单数据一般都是数组；
+        数组的键名为标签的“name”属性；
+        数组的值为用户输入“<input>”标签的数据；
+        “<input>”标签分为许多的类型“type”；
+        
+        “<lable>”标签会与某个标签关联起来，这有“for”属性的值决定；
+        “for”属性的值一般对应另一个标签的“id”，毕竟只有“id”才能具体的代表某个标签；
+        -->
         <label for="name" class="sr-only">名字</label>
         <input type="text" name="name" id="name" class="form-control" placeholder="名字" required autofocus>
 
@@ -47,6 +56,7 @@
         <label class="sr-only">重复密码</label>
         <input type="password" name="password_confirmation" class="form-control" placeholder="重复输入密码" required>
 
+        @include('layout.error')
         <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
       </form>
 
