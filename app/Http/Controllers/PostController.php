@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller {
 
@@ -34,27 +35,51 @@ class PostController extends Controller {
     public function store() {
         // 从请求中获取所有数据的方法：Request::all()，
         // 或下面的request()方法，这是由Request门面对象提供的
-        // 需要指明传来的具体参数可在括号内注明，
+        // 需要指明传来的某个具体参数可在括号内注明，
         // 留空表示获取所有内容
+
         // 验证
         $this->validate(request(), [
             'title' => 'required|string|max:100|min:4',
-            'content' => 'required|string|max:15000|min:100',
+            'content' => 'required|string|max:50000|min:100',
         ]);
 
-        // 逻辑
-        $post = new Post();
-        $post->title = request('title');
-        $post->content = request('content');
-        $post->save();
+        /**
+         * 逻辑
+         * 
+         * 这里的文章存储逻辑包括了：
+         * ①来自用户请求的文章数据调用模型方法进行存储；
+         * ②获取用户ID进行逻辑行为的权限验证（由于用户ID是使用Auth验证登陆后产生的Session_id，
+         *  所以，用户ID的获取就和Auth紧密相关）
+         * 
+         * 文章存储方法：
+         * create()接收的参数是一个数组；
+         * compact()方法的使用前提是，以数组形式输出到某个对象时，变量名应等于键名。
+         *  php compact函数用于创建数组，compact函数的参数将接受一个或多个变量，然
+         * 后将变量的名称作为该创建 数组的“索引”，变量值作为该创建 数组的值，然后
+         * 返回创建完成的数组。
+         * 
+         * 1) 通过原始的实例化Post数据模型类方法进行存储；
+         * $post = new Post();
+         * $post->title = request('title');
+         * $post->content = request('content');
+         * $post->save();
+         * 
+         * 2) 或直接传递request()的参数数组：
+         * Post::create(request(['title', 'content']));
+         * 
+         * 3) 用下面的代码一样可以实现写入文章到数据库，建议使用此方法；
+         * $params = ['title' => request('title'), 'content' => request('content'),'user_id' => $user_id];
+         * 下面使用compact()方法表示后略简单些：
+         * $params = array_merge(request(['title', 'content']), compact('user_id'));
+         * Post::create($params);
+         */
 
-        // 用下面的代码一样可以实现写入文章到数据库
-        // $params = ['title' => request('title'), 'content' => request('content')];
-        // 或直接传递request()的参数数组
-        // $params = request(['title', 'content']);
-        // Post::create($params);
-        // 即
-        // Post::create($request(['title', 'content']));
+        $user_id = Auth::id();
+        $params = array_merge(request(['title', 'content']), compact('user_id'));
+        Post::create($params);
+
+
         // 渲染提交后的页面
         return redirect("/posts");
     }
@@ -79,10 +104,14 @@ class PostController extends Controller {
         return redirect("/posts/{$post->id}");
     }
 
-    //上传图片
+    //上传图片，返回文本编辑器相应的图片链接
     public function uploadImage(Request $request) {
 
-        // TODO 图片上传与路径、返回
+        /**
+         * @TODO
+         * 
+         * 图片上传与路径返回
+         */
         if ($request->hasFile('filename') && $request->file('filename')->isValid()) {
             $photo = $request->file('filename');
             $extension = $photo->extension();

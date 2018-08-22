@@ -17,5 +17,10 @@ class Post extends Model{
     protected $fillable = ['title', 'content'];
     // 开启自动维护时间戳
     public $timestamps = true;
+    
+    // 用户关联（将用户和文章关联起来）
+    public function user() {
+        
+    }
 
 }

@@ -11,6 +11,8 @@
   |
  */
 
+Route::get('/','PostController@index');
+
 /**
  * 文章模块
  */
