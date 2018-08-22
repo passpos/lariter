@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller {
 
@@ -35,10 +36,10 @@ class RegisterController extends Controller {
         // 加密前：
         // $password = $request->input('password');
         // 加密后：
-        $password = bcrypt($request->input('password'));
+        $password = Hash::make($request->input('password'));
 
         $user = User::create(compact('name', 'email', 'password'));
-        
+
         return redirect('/user/login');
     }
 

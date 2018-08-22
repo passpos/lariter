@@ -14,7 +14,7 @@
     </textarea>
   </div>
 
-  @include('layout.error')
+  @include('layout.errors')
 
   <!--提交按钮-->
   <button  id="passage-store" type="submit" class="btn btn-default">提交</button>
