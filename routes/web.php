@@ -26,7 +26,7 @@ Route::prefix('posts')->group(function () {
 
     //创建、存储文章
     Route::get('create', 'PostController@create');
-    Route::post('', 'PostController@store');
+    Route::post('store', 'PostController@store');
 
     //编辑、更新文章
     Route::get('{post}/edit', 'PostController@edit')

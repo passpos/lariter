@@ -1,6 +1,6 @@
 @extends('layout.passageer')
 @section('content')
-<form action="/posts" method="POST">
+<form action="/posts/store" method="POST">
   @csrf
   <div class="form-group" style="width:800px">
     <label>标题</label>
@@ -17,7 +17,7 @@
   @include('layout.errors')
 
   <!--提交按钮-->
-  <button  id="passage-store" type="submit" class="btn btn-default">提交</button>
+  <button  id="passage-store" type="submit" class="btn btn-default">保存</button>
 
 </form>
 

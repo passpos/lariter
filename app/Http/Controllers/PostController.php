@@ -77,6 +77,7 @@ class PostController extends Controller {
 
         $user_id = Auth::id();
         $params = array_merge(request(['title', 'content']), compact('user_id'));
+
         Post::create($params);
 
 

@@ -19,7 +19,7 @@
   </div>
 
   <!-- 2. 创作日期与作者-->
-  <p class="blog-post-meta">{{$posts->created_at->toFormattedDateString()}}<a href="#">Kassandra Ankunding2</a></p>
+  <p class="blog-post-meta"><a href="#">{{$posts->user->name}}</a>{{$posts->created_at->toFormattedDateString()}}</p>
 
   <!-- 3. 文章-->
   <p>{!! $posts->content !!}</p>
