@@ -19,7 +19,7 @@ class Post extends Model{
     public $timestamps = true;
     
     /**
-     * 这里是用户关联（将用户和文章关联起来）
+     * 用户关联（将用户和文章关联起来），用于访问关联的数据。
      */
     public function user() {
         /**
