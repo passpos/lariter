@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.index')
 @section('content')
 <div class="col-sm-8 blog-main">
   <div>
@@ -49,19 +49,20 @@
     @foreach($posts as $post)
     <div class="blog-post">
       <h2 class="blog-post-title">
-        <a href="/posts/{{$post->id}}" >{{$post->title}}</a>
+        <a href="/posts/{{ $post->id }}" >{{ $post->title }}</a>
       </h2>
  
       <p class="blog-post-meta">
-        <a href="/user/{{$post->user->id}}">{{$post->user->name}}</a>
-        {{$post->created_at->toFormattedDateString()}}
+        <a href="/user/{{ $post->user->id }}">{{ $post->user->name }}</a>
+        {{ $post->created_at->toFormattedDateString() }}
       </p>
       {!! str_limit($post->content, 300, '……') !!}
-      <p class="blog-post-meta">赞 0  | 评论 0</p>
+      <p class="blog-post-meta">赞 0  | 评论 {{ $post->comments_count }}</p>
     </div>
     @endforeach
 
-    {{$posts->links()}}
+    {{-- 分页链接 --}}
+    {{ $posts->links() }}
 
   </div><!-- /.blog-main -->
 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,18 +11,25 @@ class PostController extends Controller {
 
     // 文章列表
     public function index() {
+        /**
+         * @TODO 评论数统计与渲染
+         * withCount('comments')->get()->
+         */
         $posts = Post::paginate(5);
         return view('post.index', ['posts' => $posts]);
     }
 
     //文章详情
-    public function show(Post $post) {
-        return view('post.show', ['posts' => $post]);
+    public function passage(Post $post) {
+        // 提前在控制器中加载评论数据；
+        // 此处加载后，模板渲染的评论数据就是这里的，不会再次加载。
+        $post->load('comments');
+        return view('post.passage', ['post' => $post]);
     }
 
     //创建文章
     public function create() {
-        return view('post.create',['title' => '创作一篇文章!']);
+        return view('post.create', ['title' => '创作一篇文章!']);
     }
 
     /**
@@ -32,13 +40,11 @@ class PostController extends Controller {
      * ②逻辑（传递数据到数据表模型的方法）
      * ③渲染
      */
-
     public function store() {
         // 从请求中获取所有数据的方法：Request::all()，
         // 或下面的request()方法，这是由Request门面对象提供的
         // 需要指明传来的某个具体参数可在括号内注明，
         // 留空表示获取所有内容
-
         // 验证
         $this->validate(request(), [
             'title' => 'required|string|max:100|min:4',
@@ -75,7 +81,6 @@ class PostController extends Controller {
          * $params = array_merge(request(['title', 'content']), compact('user_id'));
          * Post::create($params);
          */
-
         $user_id = Auth::id();
         $params = array_merge(request(['title', 'content']), compact('user_id'));
 
@@ -86,19 +91,19 @@ class PostController extends Controller {
         return redirect("/posts");
     }
 
-    //编辑文章
+    // 编辑文章
     public function edit(Post $post) {
-        return view('post/edit', compact('post'),['title' => $post->title]);
+        return view('post.edit', compact('post'), ['title' => $post->title]);
     }
 
-    //更新文章
+    // 更新文章
     public function update(Post $post) {
         // 验证
         $this->validate(request(), [
             'title' => 'required|string|max:100|min:4',
             'content' => 'required|string|max:15000|min:100',
         ]);
-        $this->authorize('update',$post);
+        $this->authorize('update', $post);
         // 逻辑
         $post->title = request('title');
         $post->content = request('content');
@@ -107,14 +112,14 @@ class PostController extends Controller {
         return redirect("/posts/{$post->id}");
     }
 
-    //上传图片，返回文本编辑器相应的图片链接
+    /**
+     * 图片上传与路径返回
+     * 
+     * @TODO
+     * 上传图片，返回文本编辑器相应的图片链接
+     */
     public function uploadImage(Request $request) {
 
-        /**
-         * @TODO
-         * 
-         * 图片上传与路径返回
-         */
         if ($request->hasFile('filename') && $request->file('filename')->isValid()) {
             $photo = $request->file('filename');
             $extension = $photo->extension();
@@ -131,11 +136,38 @@ class PostController extends Controller {
         return asset('storage/' . 'mbkgf');
     }
 
-    //删除文章
+    // 删除文章
     public function delete(Post $post) {
         // TODO:这里应该添加用户的权限认证
         $post->delete();
         return redirect("/posts");
+    }
+
+    // 提交评论文章
+    public function comment(Post $post) {
+
+        // 验证
+        $this->validate(request(), [
+            'content' => 'required|min:3'
+        ]);
+
+        /**
+         * 逻辑
+         * 
+         * 这里通过模型关联访问comments表，并保存评论数据；
+         * 
+         * 为什么要新建Comment模型对象？
+         *   之前的用例中，同时保存多个表单数据，需要在模型中设置$fillable属性，使得能够同时保存多个数据；
+         *   如果不设置$fillable，就不能同时传递多个字段的值，而是通过传递一个数据对象；
+         */
+        $comment = new Comment();
+        $comment->user_id = Auth::id();
+        $comment->post_id = request('post_id');
+        $comment->content = request('content');
+        $post->comments()->save($comment);
+
+        // 渲染
+        return back();
     }
 
 }

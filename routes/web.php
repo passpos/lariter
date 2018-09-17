@@ -21,7 +21,7 @@ Route::prefix('posts')->group(function () {
     Route::get('', 'PostController@index');
 
     //文章详情页
-    Route::get('{post}', 'PostController@show')
+    Route::get('{post}', 'PostController@passage')
             ->where('post', '[0-9]+');
 
     //创建、存储文章
@@ -38,6 +38,9 @@ Route::prefix('posts')->group(function () {
 
     //上传图片
     Route::post('upload/image', 'PostController@uploadImage');
+    
+    // 提交评论
+    Route::post('comment/{post}','PostController@comment');
 
 
 });
