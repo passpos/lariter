@@ -21,7 +21,7 @@ class PostController extends Controller {
 
     //创建文章
     public function create() {
-        return view('post.create');
+        return view('post.create',['title' => '创作一篇文章!']);
     }
 
     /**
@@ -32,6 +32,7 @@ class PostController extends Controller {
      * ②逻辑（传递数据到数据表模型的方法）
      * ③渲染
      */
+
     public function store() {
         // 从请求中获取所有数据的方法：Request::all()，
         // 或下面的request()方法，这是由Request门面对象提供的
@@ -87,7 +88,7 @@ class PostController extends Controller {
 
     //编辑文章
     public function edit(Post $post) {
-        return view('post/edit', compact('post'));
+        return view('post/edit', compact('post'),['title' => $post->title]);
     }
 
     //更新文章
@@ -97,6 +98,7 @@ class PostController extends Controller {
             'title' => 'required|string|max:100|min:4',
             'content' => 'required|string|max:15000|min:100',
         ]);
+        $this->authorize('update',$post);
         // 逻辑
         $post->title = request('title');
         $post->content = request('content');

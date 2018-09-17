@@ -56,7 +56,7 @@
         <a href="/user/{{$post->user->id}}">{{$post->user->name}}</a>
         {{$post->created_at->toFormattedDateString()}}
       </p>
-      {!! str_limit($post->content, 200, '……') !!}
+      {!! str_limit($post->content, 300, '……') !!}
       <p class="blog-post-meta">赞 0  | 评论 0</p>
     </div>
     @endforeach

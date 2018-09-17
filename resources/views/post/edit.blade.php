@@ -1,4 +1,4 @@
-@extends('layout.passageer')
+@extends('layout.editor')
 @section('content')
 <form action="/posts/{{$post->id}}" method="POST">
   {{method_field("PUT")}}

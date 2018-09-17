@@ -1,4 +1,4 @@
-@extends('layout.passageer')
+@extends('layout.editor')
 @section('content')
 <form action="/posts/store" method="POST">
   @csrf

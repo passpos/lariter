@@ -31,7 +31,6 @@
             <li><a href="/user/5/setting">个人设置</a></li>
             <li><a href="/user/logout">登出</a></li>
           </ul>
-
         </div>
       </li>
     </ul>

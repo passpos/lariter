@@ -5,16 +5,18 @@
 
     <!-- 1. 标题 -->
     <h2 class="blog-post-title">{{$posts->title}}</h2>
-
+    @can('update',$posts)
     <!--实时编辑按钮-->
     <a style="margin: auto"  href="/posts/{{$posts->id}}/edit">
       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
     </a>
-
+    @endcan
+    @can('delete',$posts)
     <!--实时删除按钮-->
     <a style="margin: auto"  href="/posts/{{$posts->id}}/delete">
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </a>
+    @endcan
 
   </div>
 

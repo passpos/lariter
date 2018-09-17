@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="{{ $posts->user->name }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{$posts->title}}</title>
+    <title>{{ $posts->title }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -38,9 +38,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/kindeditor/kindeditor-all-min.js"></script>
-    <script type="text/javascript" src="/js/kindeditor/lang/zh-CN.js"></script>
-    <script src="/js/myEditor.js"></script>
 
   </body>
 </html>
