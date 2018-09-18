@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Comment;
+use App\Up;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -167,6 +168,22 @@ class PostController extends Controller {
         $post->comments()->save($comment);
 
         // 渲染
+        return back();
+    }
+
+    // 点赞
+    public function up(Post $post) {
+        $param = [
+            'user_id' => Auth::id(),
+            'post_id' => $post->id,
+        ];
+        Up::firstOrCreate($param);
+        return back();
+    }
+
+    // 取消点赞
+    public function unup(Post $post) {
+        $post->up(Auth::id())->delete();
         return back();
     }
 

@@ -3,16 +3,16 @@
 <div class="blog-post">
   <div style="display:inline-flex">
 
-    <!-- 1. 标题 -->
+    {{-- 1. 标题 --}}
     <h2 class="blog-post-title">{{$post->title}}</h2>
     @can('update',$post)
-    <!--实时编辑按钮-->
+    {{--实时编辑按钮--}}
     <a style="margin: auto"  href="/posts/{{$post->id}}/edit">
       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
     </a>
     @endcan
     @can('delete',$post)
-    <!--实时删除按钮-->
+    {{--实时删除按钮--}}
     <a style="margin: auto"  href="/posts/{{$post->id}}/delete">
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </a>
@@ -20,23 +20,26 @@
 
   </div>
 
-  <!-- 2. 创作日期与作者-->
-  <p class="blog-post-meta"><a href="#">{{$post->user->name}}</a>{{$post->created_at->toFormattedDateString()}}</p>
+  {{-- 2. 创作日期与作者--}}
+  <p class="blog-post-meta"><a href="#">{{ $post->user->name }}</a>{{ $post->created_at->toFormattedDateString() }}</p>
 
   <!-- 3. 文章-->
   <p>{!! $post->content !!}</p>
 
   <div>
-    <a href="/posts/{{$post->id}}/zan" type="button" class="btn btn-primary btn-lg">赞</a>
-
+    @if($post->up(Auth::id())->exists())
+    <a href="/posts/unup/{{ $post->id }}" type="button" class="btn btn-default btn-lg">取消赞</a>
+    @else
+    <a href="/posts/up/{{ $post->id }}" type="button" class="btn btn-primary btn-lg">赞</a>
+    @endif
   </div>
 </div>
 
 <div class="panel panel-default">
-  <!-- Default panel contents -->
+  {{-- Default panel contents --}}
   <div class="panel-heading">评论</div>
 
-  <!-- List group -->
+  {{-- List group --}}
   <ul class="list-group">
     @foreach($post->comments as $comment)
     <li class="list-group-item">
@@ -47,14 +50,14 @@
     </li>
     @endforeach
   </ul>
-  
+
 </div>
 
 <div class="panel panel-default">
-  <!-- Default panel contents -->
+  {{-- Default panel contents --}}
   <div class="panel-heading">发表评论</div>
 
-  <!-- List group -->
+  {{-- List group --}}
   <ul class="list-group">
     <form action="/posts/comment/{{$post->id}}" method="POST">
       @csrf

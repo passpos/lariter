@@ -11,7 +11,7 @@
   |
  */
 
-Route::get('/','PostController@index');
+Route::get('/', 'PostController@index');
 
 /**
  * 文章模块
@@ -19,30 +19,28 @@ Route::get('/','PostController@index');
 Route::prefix('posts')->group(function () {
     //文章列表页
     Route::get('', 'PostController@index');
-
     //文章详情页
-    Route::get('{post}', 'PostController@passage')
-            ->where('post', '[0-9]+');
+    Route::get('{post}', 'PostController@passage')->where('post', '[0-9]+');
 
     //创建、存储文章
     Route::get('create', 'PostController@create');
     Route::post('store', 'PostController@store');
-
     //编辑、更新文章
-    Route::get('{post}/edit', 'PostController@edit')
-            ->where('post', '[0-9]+');
-    Route::put('{post}', 'PostController@update')
-            ->where('post', '[0-9]+');
+    Route::get('{post}/edit', 'PostController@edit')->where('post', '[0-9]+');
+    Route::put('{post}', 'PostController@update')->where('post', '[0-9]+');
     //删除文章
     Route::get('{post}/delete', 'PostController@delete');
 
     //上传图片
     Route::post('upload/image', 'PostController@uploadImage');
-    
+
     // 提交评论
-    Route::post('comment/{post}','PostController@comment');
+    Route::post('comment/{post}', 'PostController@comment');
 
-
+    // 点赞
+    Route::get('up/{post}', 'PostController@up');
+    // 取消点赞
+    Route::get('unup/{post}', 'PostController@unup');
 });
 
 /**
@@ -51,7 +49,6 @@ Route::prefix('posts')->group(function () {
 Route::prefix('user')->group(function () {
     //Auth::routes();
     //Route::get('/home', 'HomeController@index')->name('home');
-
     // 用户注册链接，跳转到注册表单页
     Route::get('register', 'RegisterController@index');
     // 注册表单处理

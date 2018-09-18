@@ -4,14 +4,14 @@
   <div>
     <div id="carousel-example" class="carousel slide" data-ride="carousel">
 
-      <!-- Indicators -->
+      {{-- Indicators --}}
       <ol class="carousel-indicators">
         <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-example" data-slide-to="1"></li>
         <li data-target="#carousel-example" data-slide-to="2"></li>
       </ol>
 
-      <!-- Wrapper for slides -->
+      {{-- Wrapper for slides --}}
       <div class="carousel-inner">
 
         <div class="item active">
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <!-- Controls -->
+      {{-- Controls --}}
       <a class="left carousel-control" href="#carousel-example" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left">
         </span>
@@ -51,7 +51,7 @@
       <h2 class="blog-post-title">
         <a href="/posts/{{ $post->id }}" >{{ $post->title }}</a>
       </h2>
- 
+
       <p class="blog-post-meta">
         <a href="/user/{{ $post->user->id }}">{{ $post->user->name }}</a>
         {{ $post->created_at->toFormattedDateString() }}
@@ -64,7 +64,7 @@
     {{-- 分页链接 --}}
     {{ $posts->links() }}
 
-  </div><!-- /.blog-main -->
+  </div>{{-- /.blog-main --}}
 </div>
 @endsection
 

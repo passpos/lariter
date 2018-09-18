@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 // 对应表“posts”
-class Post extends Model{
+class Post extends Model {
 
     // 指明表名
     protected $table = 'posts';
@@ -14,10 +14,10 @@ class Post extends Model{
     //不可以注入的字段
     protected $guarded = [];
     //可以注入的字段
-    protected $fillable = ['title', 'content','user_id'];
+    protected $fillable = ['title', 'content', 'user_id'];
     // 开启自动维护时间戳
     public $timestamps = true;
-    
+
     /**
      * 用户关联（将文章和用户关联起来），用于访问关联的数据。
      * 
@@ -44,12 +44,27 @@ class Post extends Model{
          *     使用$post->user->name访问具体的‘name’值；
          *     使用$post->user()访问一条数据对象（数组）；
          */
-        
-        return $this->belongsTo('App\User','user_id','id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
+    /**
+     * 评论关联
+     */
     public function comments() {
-        return $this->hasMany('App\Comment')->orderBy('created_at','desc');
+        return $this->hasMany('App\Comment')->orderBy('created_at', 'desc');
     }
-    
+
+    /**
+     * 赞和用户进行关联
+     * 
+     * 以user_id作为约束参数
+     */
+    public function up($user_id) {
+        return $this->hasOne('App\Up')->where('user_id', $user_id);
+    }
+    // 所有赞
+    public function ups() {
+        return $this->hasMany('App\Up');
+    }
+
 }
