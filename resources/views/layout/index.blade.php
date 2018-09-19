@@ -22,19 +22,15 @@
   </head>
 
   <body>
+    
     @include('layout.nav')
-
     <div class="container">
-      <div class="blog-header">
-      </div>
-
+      <div class="blog-header"></div>
       <div class="row">
         @yield('content')
         @include('layout.sidebar')
-      </div>
-
+      </div><!-- /.row -->
     </div><!-- /.container -->
-
     @include('layout.footer')
 
     <!-- 

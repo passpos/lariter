@@ -24,13 +24,13 @@
   </head>
 
   <body>
+
     @include('layout.nav')
-    <div class="bloger">
-
+    <div class="container">
       <div class="blog-header"></div>
-
-      <div class="row">@yield('content')</div>
-
+      <div class="row">
+        @yield('content')
+      </div>
     </div><!-- /.container -->
     @include('layout.footer')
 

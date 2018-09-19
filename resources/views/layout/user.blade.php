@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
-    <meta name="author" content="{{ $post->user->name }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $post->title }}</title>
+    <title> {{ Auth::user()->name }}的个人主页</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -25,12 +24,12 @@
 
   <body>
     @include('layout.nav')
-    <div class="bloger">
-
+    <div class="container">
       <div class="blog-header"></div>
-
-      <div class="row">@yield('content')</div>
-
+      <div class="row">
+        @yield('content')
+        @include('layout.sidebar')
+      </div><!-- /.row -->
     </div><!-- /.container -->
     @include('layout.footer')
 

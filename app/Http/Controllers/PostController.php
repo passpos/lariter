@@ -13,10 +13,11 @@ class PostController extends Controller {
     // 文章列表
     public function index() {
         /**
-         * @TODO 评论数统计与渲染
-         * withCount('comments')->get()->
+         * 评论数统计与渲染
          */
-        $posts = Post::paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')
+                ->withCount(['comments', 'ups'])
+                ->paginate(5);
         return view('post.index', ['posts' => $posts]);
     }
 
@@ -25,7 +26,15 @@ class PostController extends Controller {
         // 提前在控制器中加载评论数据；
         // 此处加载后，模板渲染的评论数据就是这里的，不会再次加载。
         $post->load('comments');
-        return view('post.passage', ['post' => $post]);
+        $title = $post->title;
+        $author = $post->user->name;
+        $postid = $post->id;
+        return view('post.passage', [
+            'post' => $post,
+            'title' => $title,
+            'author' => $author,
+            'postid' => $postid
+        ]);
     }
 
     //创建文章
