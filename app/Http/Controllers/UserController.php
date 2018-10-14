@@ -15,9 +15,9 @@ class UserController extends Controller {
          * 信息获取方法：
          * 通过User模型，使用withCount()在“不加载关联关系”的情况下统计关联结果数目，
          *  使用的前提是：在模型中提前定义/关联了要查找的模型；
-         *      如下面的：['posts', 'stars', 'fans']，就是在User模型中定义的管理；
+         *    如下面的：['posts', 'stars', 'fans']，就是在User模型中定义的管理；
          *  withCount()只能在Query Builder（查询构建器）中使用,如在where、orderBy、find等语句之后调用。
-         * 
+         * find()查询与条件匹配的记录
          */
         $homepageUser = User::withCount(['posts', 'fans', 'stars'])->find($user->id);
 
