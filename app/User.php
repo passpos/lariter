@@ -52,7 +52,7 @@ class User extends Authenticatable {
     }
 
     public function stars() {
-        return $this->hasMany('App\Post', 'fan_id', 'id');
+        return $this->hasMany('App\Fan', 'fan_id', 'id');
     }
 
     /**

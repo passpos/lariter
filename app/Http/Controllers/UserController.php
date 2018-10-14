@@ -71,12 +71,12 @@ class UserController extends Controller {
     }
 
     // 关注某个用户
-    public function doFocus() {
+    public function doFocus(User $user) {
         return;
     }
 
     // 取消关注某个用户
-    public function unFocus() {
+    public function unFocus(User $user) {
         return;
     }
 
