@@ -15,7 +15,7 @@ yarn-error.log
 /resources/views/课程材料
 /js/libs/
 /js/NKeditor*
-/js/kindeditor*
+/js/kindeditor/
 /js/wangEditor*
 /css/bootstrap*
 /css/wangEditor*
