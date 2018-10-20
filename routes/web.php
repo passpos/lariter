@@ -11,6 +11,7 @@
   |
  */
 
+// 文章首页、列表页
 Route::get('/', 'PostController@index');
 
 /**

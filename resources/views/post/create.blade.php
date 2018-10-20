@@ -9,8 +9,8 @@
 
   <div class="form-group">
     <label>内容</label>
-    <textarea id="editor_1" name="content" style="border: solid 1px #666; width:800px; height:500px;">
-        <strong>在这里添加内容</strong>
+    <textarea id="editor_1" name="content" style="border: solid 1px #666; width:800px; height:800px;">
+        在这里添加内容
     </textarea>
   </div>
 

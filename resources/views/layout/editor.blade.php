@@ -11,7 +11,7 @@
     <title>{{ $title }}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap-4.1.3/bootstrap.min.css">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/blog.css">
 
@@ -36,10 +36,10 @@
 
     <!---------------- Bootstrap core JavaScript ---------------->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/kindeditor/kindeditor-all-min.js"></script>
-    <script type="text/javascript" src="/js/kindeditor/lang/zh-CN.js"></script>
+    <script type="text/javascript" src="/js/libs/jquery-3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/libs/bootstrap-4.1.3/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/NKeditor5.0.3.2/NKeditor-all-min.js"></script>
+    <script type="text/javascript" src="/js/NKeditor5.0.3.2/lang/zh-CN.js"></script>
     <script type="text/javascript" src="/js/myEditor.js"></script>
 
   </body>

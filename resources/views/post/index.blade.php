@@ -53,7 +53,7 @@
       </h2>
 
       <p class="blog-post-meta">
-        <a href="/user/{{ $post->user->id }}">{{ $post->user->name }}</a>
+        <a href="/user/homepage/{{ $post->user->id }}">{{ $post->user->name }}</a>
         {{ $post->created_at->toFormattedDateString() }}
       </p>
       {!! str_limit($post->content, 300, '……') !!}

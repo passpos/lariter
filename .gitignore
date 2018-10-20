@@ -13,3 +13,9 @@ yarn-error.log
 .env
 /nbproject/private/
 /resources/views/课程材料
+/js/libs/
+/js/NKeditor*
+/js/kindeditor*
+/js/wangEditor*
+/css/bootstrap*
+/css/wangEditor*

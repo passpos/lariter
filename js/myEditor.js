@@ -1,4 +1,8 @@
-/********************** KindEditor ***********************/
+/**
+ * KindEditor
+ * 
+ * 创建编辑器时下面的配置也适用于NKEditor。
+ */
 KindEditor.ready(function (K) {
     window.editor = K.create('#editor_1', {
         cssPath: '../plugins/code/prettify.css',
@@ -19,3 +23,7 @@ KindEditor.ready(function (K) {
     });
     prettyPrint();
 });
+
+/**
+ * NKEditor
+ */
