@@ -44,7 +44,7 @@ class LoginController extends Controller {
     // 登出行为
     public function logout() {
         Auth::logout();
-        return redirect('/user/login');
+        return redirect('/posts');
     }
 
 }

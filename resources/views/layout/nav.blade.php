@@ -19,6 +19,7 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
+      @if(Auth::id())
       <li class="dropdown">
         <div>
           <img src="/storage/9f0b0809fd136c389c20f949baae3957/iBkvipBCiX6cHitZSdTaXydpen5PBiul7yYCc88O.jpeg" alt="" class="img-rounded" style="border-radius:500px; height: 30px">
@@ -34,6 +35,10 @@
           </ul>
         </div>
       </li>
+      @else
+      <a class="blog-nav-item" href="/user/register">注册</a>
+      <a class="blog-nav-item" href="/user/login">登录</a>
+      @endif
     </ul>
   </div>
 </div>
