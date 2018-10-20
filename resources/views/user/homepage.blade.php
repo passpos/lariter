@@ -6,6 +6,7 @@
   <blockquote>
     <p><img src="{{ $homepageUser->avatar }}" alt="" class="img-rounded" style="border-radius:500px; height: 40px">{{ $homepageUser->name }}</p>
     <footer>关注：{{ $homepageUser->stars_count }}｜粉丝：{{ $homepageUser->fans_count }}｜文章：{{ $homepageUser->posts_count }}</footer>
+    @include('user.components.focus',['target_user' => $homepageUser])
   </blockquote>
 </div>
 
@@ -23,9 +24,9 @@
       <div class="tab-pane active" id="tab_1">
         @foreach($posts as $post)
         <div class="blog-post" style="margin-top: 30px">
-          <p class=""><a href="/user/{{ $post->user->id }}">{{ $post->user->name }}</a> {{ $post->created_at->diffForHumans() }}</p>
+          <p class=""><a href="/user/homepage/{{ $post->user->id }}">{{ $post->user->name }}</a> {{ $post->created_at->diffForHumans() }}</p>
           <p class=""><a href="/posts/{{ $post->id }}" >{{ $post->title }}</a></p>
-          <p>{!! str_limit($post->content, 200, '……') !!}</p>
+          <p>{!! str_limit($post->content, 0, '……') !!}</p>
         </div>
         @endforeach
       </div>
@@ -36,11 +37,7 @@
         <div class="blog-post" style="margin-top: 30px">
           <p class="">{{ $star->name }}</p>
           <p class="">关注：{{ $star->stars_count }} | 粉丝：{{ $star->fans_count }}｜ 文章：{{ $star->posts_count }}</p>
-
-          <div>
-            <button class="btn btn-default like-button" like-value="1" like-user="6" _token="MESUY3topeHgvFqsy9EcM916UWQq6khiGHM91wHy" type="button">取消关注</button>
-          </div>
-
+          @include('user.components.focus',['target_user' => $star])
         </div>
         @endforeach
       </div>
@@ -51,6 +48,7 @@
         <div class="blog-post" style="margin-top: 30px">
           <p class="">{{ $fan->name }}</p>
           <p class="">关注：{{ $fan->stars_count }} | 粉丝：{{ $fan->fans_count }}｜ 文章：{{ $fan->posts_count }}</p>
+          @include('user.components.focus',['target_user' => $fan])
         </div>
         @endforeach
       </div>

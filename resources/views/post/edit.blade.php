@@ -1,6 +1,6 @@
 @extends('layout.editor')
 @section('content')
-<form action="/posts/{{$post->id}}" method="POST">
+<form action="/posts/store/{{$post->id}}" method="POST" style="width:800px">
   {{method_field("PUT")}}
   @csrf
 
@@ -11,7 +11,7 @@
 
   <div class="form-group">
     <label>内容</label>
-    <textarea id="editor_1" name="content" class="form-control" style="height:400px;max-height:500px;"  placeholder="这里是内容">
+    <textarea id="editor_1" name="content" class="form-control" style="height:600px;max-height:1000px;" placeholder="这里是内容">
         {{ $post->content }}
     </textarea>
   </div>

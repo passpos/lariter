@@ -7,13 +7,13 @@
     <h2 class="blog-post-title">{{ $title }}</h2>
     @can('update',$post)
     {{--实时编辑按钮--}}
-    <a style="margin: auto"  href="/posts/{{ $postid }}/edit">
+    <a style="margin: auto"  href="/posts/edit/{{ $postid }}">
       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
     </a>
     @endcan
     @can('delete',$post)
     {{--实时删除按钮--}}
-    <a style="margin: auto"  href="/posts/{{ $postid }}/delete">
+    <a style="margin: auto"  href="/posts/delete/{{ $postid }}">
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </a>
     @endcan

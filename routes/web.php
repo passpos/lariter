@@ -27,10 +27,10 @@ Route::prefix('posts')->group(function () {
     Route::get('create', 'PostController@create');
     Route::post('store', 'PostController@store');
     //编辑、更新文章
-    Route::get('{post}/edit', 'PostController@edit')->where('post', '[0-9]+');
-    Route::put('{post}', 'PostController@update')->where('post', '[0-9]+');
+    Route::get('edit/{post}', 'PostController@edit')->where('post', '[0-9]+');
+    Route::put('store/{post}', 'PostController@update')->where('post', '[0-9]+');
     //删除文章
-    Route::get('{post}/delete', 'PostController@delete');
+    Route::get('delete/{post}', 'PostController@delete');
 
     //上传图片
     Route::post('upload/image', 'PostController@uploadImage');

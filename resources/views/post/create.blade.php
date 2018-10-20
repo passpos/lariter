@@ -1,15 +1,15 @@
 @extends('layout.editor')
 @section('content')
-<form action="/posts/store" method="POST">
+<form action="/posts/store" method="POST" style="width:800px">
   @csrf
-  <div class="form-group" style="width:800px">
+  <div class="form-group">
     <label>标题</label>
     <input name="title" type="text" class="form-control" placeholder="这里是标题">
   </div>
 
   <div class="form-group">
     <label>内容</label>
-    <textarea id="editor_1" name="content" style="border: solid 1px #666; width:800px; height:800px;">
+    <textarea id="editor_1" name="content" style="border: solid 1px #666; width:800px; height:600px;">
         在这里添加内容
     </textarea>
   </div>

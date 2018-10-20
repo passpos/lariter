@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
@@ -55,6 +56,28 @@ class UserController extends Controller {
         return view('user.homepage', compact('homepageUser', 'posts', 'fanUsers', 'starUsers'));
     }
 
+    // 关注某个用户
+    public function doFocus(User $user) {
+        $me = Auth::user();
+        $me->doFocus($user->id);
+        // 执行成功就返回一个json数组数据给前端的js
+        return [
+            'err' => 0,
+            'msg' => ''
+        ];
+    }
+
+    // 取消关注某个用户
+    public function unFocus(User $user) {
+        $me = Auth::user();
+        $me->unFocus($user->id);
+        // 执行成功就返回一个json数组数据给前端的js
+        return [
+            'err' => 0,
+            'msg' => ''
+        ];
+    }
+
     // 个人空间
     public function userField() {
         return view('user.field');
@@ -68,16 +91,6 @@ class UserController extends Controller {
     // 个人设置行为
     public function setDetails(Request $request) {
         
-    }
-
-    // 关注某个用户
-    public function doFocus(User $user) {
-        return;
-    }
-
-    // 取消关注某个用户
-    public function unFocus(User $user) {
-        return;
     }
 
 }
