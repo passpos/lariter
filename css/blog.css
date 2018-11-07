@@ -106,7 +106,10 @@ h6, .h6 {
     margin: auto;
     width: 850px;
 }
-/* Sidebar modules for boxing content */
+
+/**
+ * Sidebar modules for boxing content
+ */
 .sidebar-module {
     padding: 15px;
     margin: 0 -15px 15px;
@@ -120,6 +123,31 @@ h6, .h6 {
 .sidebar-module-inset ul:last-child,
 .sidebar-module-inset ol:last-child {
     margin-bottom: 0;
+}
+
+div#sidebar {
+    border-radius: 3px !important;
+    padding: 10px 5px !important;
+}
+
+aside.widget
+{
+    border-color: #333 !important;
+    background-color: #444 !important;
+}
+
+div.panel-heading {
+    border-radius: 3px !important;
+    border-color: #333 !important;
+    color: #ccc !important;
+    background-color: #333 !important;
+}
+
+div.panel-body,
+ul.list-group li
+{
+    border-color: #333 !important;
+    background-color: #4a4a4a !important;
 }
 
 
@@ -154,11 +182,12 @@ h6, .h6 {
  */
 
 .blog-post {
-    margin-bottom: 60px;
+    border-radius: 3px;
+    margin-bottom: 20px;
 }
 .blog-post-title {
     margin-bottom: 5px;
-    font-size: 40px;
+    font-size: 24px;
 }
 .blog-post-meta {
     margin-bottom: 20px;
@@ -170,6 +199,17 @@ p {
     word-break: normal;
 }
 
+.panel {
+    border-color: #333 !important;
+}
+
+.form-control,
+.btn-default{
+    color: #ccc;
+    border-color: #333 !important;
+    background-color: #444 !important;
+}
+
 /*
  * Footer
  */
@@ -178,7 +218,8 @@ p {
     padding: 40px 0;
     color: #999;
     text-align: center;
-    background-color: #f9f9f9;
+    background-color: #555;
+    border-color: #333 !important;
     border-top: 1px solid #e5e5e5;
 }
 .blog-footer p:last-child {
