@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Topic;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 class TopicController extends Controller {
 
@@ -21,13 +22,14 @@ class TopicController extends Controller {
      * topicCountPosts()、posts()是Topic模型中定义的方法；
      * authorBy()、topicNotBy()是Post模型中定义的scope方法；
      */
-    public function show(Topic $topic) {
+    public function show(Topic $topic,$topic_id) {
         // 专题文章数
-        $istopic = Topic::withCount('topicCountPosts')->find($topic->id);
+        $istopic = Topic::withCount('topicPosts')->find($topic_id);
         // 专题文章列表
-        $posts = $topic->posts()->orderBy('created_at' ,'desc')->take(10)->get();
+        $posts = $topic->posts()->orderBy('created_at', 'desc')->take(10)->get();
+        dd($posts);
         // 我的未投稿的文章
-        $myposts = Post::authorBy(Auth::id)->topicNotBy($topic->id)->get();
+        $myposts = Post::authorBy(Auth::id())->topicNotBy($topic_id)->get();
         return view('topic/show', compact('istopic', 'posts', 'myposts'));
     }
 

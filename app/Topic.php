@@ -27,7 +27,7 @@ class Topic extends Model {
      *   post_topics是post与topic的多对多关系表；
      */
     public function posts() {
-        $this->belongsToMany('App\Post', 'post_topics', 'topic_id', 'post_id');
+        return $this->belongsToMany('App\Post', 'post_topics', 'topic_id', 'post_id');
     }
 
     /**
@@ -37,8 +37,8 @@ class Topic extends Model {
      * @param  string  $foreignKey
      * @param  string  $localKey
      */
-    public function topicCountPosts() {
-        $this->hasMany('App\PostTopic', 'topic_id', 'id');
+    public function topicPosts() {
+        return $this->hasMany('App\PostTopic', 'topic_id', 'id');
     }
 
 }

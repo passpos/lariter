@@ -12,7 +12,7 @@ class CreatePostTopicTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('post_topic', function (Blueprint $table) {
+        Schema::create('post_topics', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id')->default(0);
             $table->integer('topic_id')->default(0);

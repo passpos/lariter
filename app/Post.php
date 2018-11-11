@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 // 对应表“posts”
 class Post extends Model {
@@ -99,8 +100,8 @@ class Post extends Model {
      *   返回所有的非$topic_id专题的Post模型中的问章。
      */
     public function scopeTopicNotBy(Builder $query, $topic_id) {
-        // 在被关联的postTopic模型中，按条件（取反）查询
-        return $query->doesntHave('postTopic', 'and', function($q) use($topic_id) {
+        // 在被关联的postTopics模型中，按条件（取反）查询
+        return $query->doesntHave('postTopics', 'and', function($q) use($topic_id) {
                     // 条件：
                     $q->where('topic_id', $topic_id);
                 }
