@@ -22,7 +22,7 @@ class Post extends Model {
      * 用户关联（将文章和用户关联起来），用于访问关联的数据。
      * 
      * 这个关联通过在Post模型中定义user模型函数；
-     * 以实现通过post条用user函数访问user表；
+     * 以实现通过post，调用user函数访问user表；
      * 
      * belongsTo()函数使user()函数即user表被归属关联到post表；
      * hasMany()函数是comment()函数
@@ -48,7 +48,8 @@ class Post extends Model {
     }
 
     /**
-     * 评论关联
+     * 被评论的文章与评论关联
+     *   一篇文章有多个评论
      */
     public function comments() {
         return $this->hasMany('App\Comment')->orderBy('created_at', 'desc');
@@ -56,15 +57,54 @@ class Post extends Model {
 
     /**
      * 赞和用户进行关联
-     * 
-     * 以user_id作为约束参数
+     *   一篇文章（对于某个确定的用户）只有一个赞；
+     *   以user_id作为约束参数；
      */
     public function up($user_id) {
         return $this->hasOne('App\Up')->where('user_id', $user_id);
     }
-    // 所有赞
+
+    // 文章获得的所有赞
     public function ups() {
-        return $this->hasMany('App\Up');
+        return $this->hasMany('App\Up', 'post_id', 'id');
+    }
+
+    /**
+     * 文章和专题的模型关联
+     *   一篇文章可以被投送发表到多个专题
+     */
+    public function postTopics() {
+        return $this->hasMany('App\PostTopic', 'post_id', 'id');
+    }
+
+    /**
+     * 属于某个作者的文章
+     *   使用scope函数进行选择性（条件性）查询；
+     *   既然是对模型的查询，当然要用查询构造器（QueryBuilder）；
+     * 要查询“某个作者”的“文章”，自然要通过Post模型的“$user_id”字段；
+     * 查询的既然是文章，自然要定义在Post模型中。
+     */
+    public function scopeAuthorBy(Builder $query, $user_id) {
+        return $query->where('user_id', $user_id);
+    }
+
+    /**
+     * 不属于某个专题的文章（此时需要传递该专题的topic_id）
+     *   doesntHave()函数，添加一个包含计数/存在性条件的关联模型到查询中；
+     *   这个查询是按条件反向查询，即查询不符合条件的结果；
+     * 
+     *   has()、doesntHave()都是针对：在关联模型中生成的条件约束，然后去查询此处Post的模型。
+     * 
+     * 查询结果是：
+     *   返回所有的非$topic_id专题的Post模型中的问章。
+     */
+    public function scopeTopicNotBy(Builder $query, $topic_id) {
+        // 在被关联的postTopic模型中，按条件（取反）查询
+        return $query->doesntHave('postTopic', 'and', function($q) use($topic_id) {
+                    // 条件：
+                    $q->where('topic_id', $topic_id);
+                }
+        );
     }
 
 }

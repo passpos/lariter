@@ -2,9 +2,17 @@
 @section("content")
 <div class="col-sm-8">
   <blockquote>
-    <p>旅游</p>
+    <p>{{ $istopic->name }}</p>
     <footer>文章：4</footer>
-    <button class="btn btn-default topic-submit"  data-toggle="modal" data-target="#topic_submit_modal" topic-id="1" _token="MESUY3topeHgvFqsy9EcM916UWQq6khiGHM91wHy" type="button">投稿</button>
+    <button 
+        class="btn btn-default topic-submit"  
+        data-toggle="modal" 
+        data-target="#topic_submit_modal" 
+        topic-id="1" 
+        _token="MESUY3topeHgvFqsy9EcM916UWQq6khiGHM91wHy" 
+        type="button">
+      投稿
+    </button>
   </blockquote>
 </div>
 <div class="modal fade" id="topic_submit_modal" tabindex="-1" role="dialog" >

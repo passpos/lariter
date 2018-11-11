@@ -182,6 +182,10 @@ class PostController extends Controller {
 
     // 点赞
     public function up(Post $post) {
+        /**
+         * 对文章的点赞行为
+         *   包含两个参数：①点赞行为发起方的user_id；②被赞的文章的id
+         */
         $param = [
             'user_id' => Auth::id(),
             'post_id' => $post->id,

@@ -82,7 +82,7 @@ Route::prefix('user')->group(function () {
 });
 
 /**
- * 主题模块
+ * 专题模块
  */
 Route::prefix('topic')->group(function () {
     Route::get('{topic_id}', 'TopicController@show');
