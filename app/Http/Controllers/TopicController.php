@@ -21,6 +21,9 @@ class TopicController extends Controller {
      * 
      * topicCountPosts()、posts()是Topic模型中定义的方法；
      * authorBy()、topicNotBy()是Post模型中定义的scope方法；
+     * 
+     * 已知问题：
+     *   专题文章列表显示异常，由$posts变量异常导致。
      */
     public function show(Topic $topic, $topic_id) {
         // 专题文章数
@@ -31,7 +34,12 @@ class TopicController extends Controller {
         $myposts = Post::authorBy(Auth::id())->topicNotBy($topic_id)->get();
         return view('topic/show', compact('istopic', 'posts', 'myposts'));
     }
-
+/**
+ * 向某专题投稿的表单接收
+ * 
+ * 已知问题：
+ *   投稿异常。
+ */
     public function publish(Topic $topic) {
         $this->validate(request(), [
             'post_ids' => 'required|array',
