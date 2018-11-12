@@ -22,19 +22,26 @@ class TopicController extends Controller {
      * topicCountPosts()、posts()是Topic模型中定义的方法；
      * authorBy()、topicNotBy()是Post模型中定义的scope方法；
      */
-    public function show(Topic $topic,$topic_id) {
+    public function show(Topic $topic, $topic_id) {
         // 专题文章数
         $istopic = Topic::withCount('topicPosts')->find($topic_id);
         // 专题文章列表
         $posts = $topic->posts()->orderBy('created_at', 'desc')->take(10)->get();
-        dd($posts);
         // 我的未投稿的文章
         $myposts = Post::authorBy(Auth::id())->topicNotBy($topic_id)->get();
         return view('topic/show', compact('istopic', 'posts', 'myposts'));
     }
 
     public function publish(Topic $topic) {
-        return view('topic/show');
+        $this->validate(request(), [
+            'post_ids' => 'required|array',
+        ]);
+        $post_ids = request('post_ids');
+        $topic_id = $topic->id;
+        foreach ($post_ids as $post_id) {
+            PostTopic::firstOrCreate(compact('topic_id', 'post_id'));
+        }
+        return back();
     }
 
 }
