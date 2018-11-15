@@ -1,5 +1,6 @@
 @extends("layout.index")
 @section("content")
+{{-- 专题详情头部 --}}
 <div class="col-sm-8">
   <blockquote>
     <p>{{ $istopic->name }}</p>
@@ -9,13 +10,13 @@
         data-toggle="modal" 
         data-target="#topic_submit_modal" 
         topic-id="{{ $istopic->id }}" 
-        _token="MESUY3topeHgvFqsy9EcM916UWQq6khiGHM91wHy" 
         type="button">
       投稿
     </button>
   </blockquote>
 </div>
-{{-- 待投稿文章 --}}
+
+{{-- 待投稿文章（默认隐藏，点击投稿按钮显示） --}}
 <div class="modal fade" id="topic_submit_modal" tabindex="-1" role="dialog" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -24,7 +25,8 @@
         <h4 class="modal-title" id="myModalLabel">我的文章</h4>
       </div>
       <div class="modal-body">
-        <form action="/topic/publish/{{ $istopic->id }}">
+        <form action="/topic/publish/{{ $istopic->id }}" method="POST">
+          @csrf
           @foreach($myposts as $post)
           <div class="checkbox">
             <label>
@@ -43,16 +45,13 @@
 {{-- 专题内的文章的列表 --}}
 <div class="col-sm-8 blog-main">
   <div class="nav-tabs-custom">
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">文章</a></li>
-    </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="tab_1">
         @foreach($posts as $post)
         <div class="blog-post" style="margin-top: 30px">
           <p class=""><a href="/user/{{ $post->user->id }}">{{ $post->user->name }}</a>{{ $post->created_at->toFormattedDateString() }}</p>
           <p class=""><a href="/posts/{{ $post->id }}" >{{ $post->title }}</a></p>
-          <p>{!! str_limit($post->content, 100, '……') !!}</p>
+          <p>{!! str_limit($post->content, 0, '……') !!}</p>
         </div>
         @endforeach
       </div>
