@@ -23,14 +23,15 @@ class LoginController extends Controller {
         $password = $request->input('password');
 
         if (Auth::guard('backend')->attempt(['name' => $name, 'password' => $password])) {
-            return redirect('backend\index');
+            return redirect('/backend/index');
         }
         // 渲染
         return Redirect::back()->withErrors('账户与密码不匹配！');
     }
 
     public function logout() {
-        
+        Auth::guard('backend')->logout();
+        return redirect('/backend/login');
     }
 
 }
