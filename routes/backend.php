@@ -13,6 +13,8 @@ Route::prefix('backend')->group(function () {
     // 登出行为
     Route::get('logout', 'LoginController@logout');
 
-    // 后台首页
-    Route::get('index', 'PanelController@index');
+    Route::group(['middleware' => 'auth:backend'], function() {
+        // 后台首页
+        Route::get('index', 'PanelController@index');
+    });
 });

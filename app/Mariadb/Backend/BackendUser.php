@@ -2,8 +2,12 @@
 
 namespace App\Mariadb\Backend;
 
-use App\Mariadb\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class BackendUser extends Model {
-    
+class BackendUser extends Authenticatable {
+
+    protected $table = 'backend_users';
+    protected $fillable = ['name', 'password'];
+    protected $primaryKey = 'id';
+
 }
