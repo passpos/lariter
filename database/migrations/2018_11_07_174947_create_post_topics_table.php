@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostTopicTable extends Migration {
+class CreatePostTopicsTable extends Migration {
 
     /**
      * Run the migrations.

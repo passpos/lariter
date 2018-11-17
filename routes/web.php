@@ -45,6 +45,14 @@ Route::prefix('posts')->group(function () {
 });
 
 /**
+ * 专题模块
+ */
+Route::prefix('topic')->group(function () {
+    Route::get('{topic_id}', 'TopicController@show');
+    Route::post('publish/{topic_id}', 'TopicController@publish');
+});
+
+/**
  * 用户模块
  */
 Route::prefix('user')->group(function () {
@@ -79,12 +87,4 @@ Route::prefix('user')->group(function () {
     Route::post('focus/{user}', 'UserController@doFocus');
     // 取消关注某个用户
     Route::post('unfocus/{user}', 'UserController@unFocus');
-});
-
-/**
- * 专题模块
- */
-Route::prefix('topic')->group(function () {
-    Route::get('{topic_id}', 'TopicController@show');
-    Route::post('publish/{topic_id}', 'TopicController@publish');
 });
