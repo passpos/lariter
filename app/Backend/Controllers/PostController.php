@@ -11,8 +11,17 @@ class PostController extends Controller {
         return view('backend.post.index', compact('posts'));
     }
 
-    public function status() {
-        return view();
+    public function status(Post $post) {
+        $this->validate(request(), [
+            'post_id' => 'required|integer',
+            'status' => 'required|integer:1,-1'
+        ]);
+        $post->status = request('status');
+        $post->save();
+        return [
+            'error' => 0,
+            'msg' => ''
+        ];
     }
 
 }

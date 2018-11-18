@@ -26,6 +26,6 @@ Route::prefix('backend')->group(function () {
         
         // 文章审核模块
         Route::get('posts', 'PostController@index');
-        Route::post('posts/{status}', 'PostController@status');
+        Route::post('posts/status', 'PostController@status');
     });
 });

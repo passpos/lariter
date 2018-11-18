@@ -1,4 +1,3 @@
-@
 <header class="main-header">
   <!-- Logo -->
   <a href="/adminlte/index2.html" class="logo">
@@ -27,7 +26,7 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-right">
-                <a href="/backend/logout" class="btn btn-default btn-flat">Sign out</a>
+                <a href="/backend/logout" class="btn btn-default btn-flat">退出</a>
               </div>
             </li>
           </ul>
