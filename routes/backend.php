@@ -16,5 +16,13 @@ Route::prefix('backend')->group(function () {
     Route::group(['middleware' => 'auth:backend'], function() {
         // 后台首页
         Route::get('index', 'PanelController@index');
+        
+        // 后台管理人员
+        Route::get('users','UserController@index');
+        // 添加管理人员
+        Route::get('users/create','UserController@create');
+        // 存储添加的管理人员
+        Route::post('users/store','UserController@store');
+        
     });
 });
