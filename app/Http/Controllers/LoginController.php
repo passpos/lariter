@@ -10,7 +10,7 @@ class LoginController extends Controller {
 
     // 登录页
     public function index() {
-        return view('user.login');
+        return view('frontend.user.login');
     }
 
     /**

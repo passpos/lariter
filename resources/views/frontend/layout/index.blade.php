@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
-    <meta name="author" content="{{ Auth::user()->name }}">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $title }}</title>
+    <title>Laravel for Blog</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap-4.1.3/bootstrap.min.css">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/blog.css">
 
@@ -24,23 +22,22 @@
   </head>
 
   <body>
-
-    @include('layout.nav')
+    
+    @include("frontend.layout.nav")
     <div class="container">
       <div class="blog-header"></div>
       <div class="row">
         @yield('content')
-      </div>
+        @include('frontend.layout.sidebar')
+      </div><!-- /.row -->
     </div><!-- /.container -->
-    @include('layout.footer')
+    @include('frontend.layout.footer')
 
-    <!---------------- Bootstrap core JavaScript ---------------->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="/js/libs/jquery-3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/libs/bootstrap-4.1.3/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/NKeditor5.0.3.2/NKeditor-all-min.js"></script>
-    <script type="text/javascript" src="/js/NKeditor5.0.3.2/lang/zh-CN.js"></script>
-    <script type="text/javascript" src="/js/myEditor.js"></script>
-
+    <!-- 
+          Bootstrap core JavaScript 
+          Placed at the end of the document so the pages load faster
+    -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Mariadb\Frontend\User;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller {
 
     // 注册页
     public function index() {
-        return view('user.register');
+        return view('frontend.user.register');
     }
 
     /**

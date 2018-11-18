@@ -23,15 +23,15 @@
   </head>
 
   <body>
-    @include('layout.nav')
+    @include('frontend.layout.nav')
     <div class="container">
       <div class="blog-header"></div>
       <div class="row">
         @yield('content')
-        @include('layout.sidebar')
+        @include('frontend.layout.sidebar')
       </div><!-- /.row -->
     </div><!-- /.container -->
-    @include('layout.footer')
+    @include('frontend.layout.footer')
 
     <!---------------- Bootstrap core JavaScript ---------------->
     <!-- Placed at the end of the document so the pages load faster -->

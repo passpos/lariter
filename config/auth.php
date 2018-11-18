@@ -44,7 +44,7 @@ return [
         'backend' => [
             'driver' => 'session',
             'provider' => 'backends',
-        ]
+        ],
     ],
     /*
       |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Mariadb\Frontend\User::class,
         ],
         'backends' => [
             'driver' => 'eloquent',

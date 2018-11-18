@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Mariadb\Frontend;
 
-use App\Fan;
+use App\Mariadb\Frontend\Fan;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -44,15 +44,15 @@ class User extends Authenticatable {
      *   'fan_id'表示关注该用户的用户id
      */
     public function posts() {
-        return $this->hasMany('App\Post', 'user_id', 'id');
+        return $this->hasMany('App\Mariadb\Frontend\Post', 'user_id', 'id');
     }
 
     public function fans() {
-        return $this->hasMany('App\Fan', 'star_id', 'id');
+        return $this->hasMany('App\Mariadb\Frontend\Fan', 'star_id', 'id');
     }
 
     public function stars() {
-        return $this->hasMany('App\Fan', 'fan_id', 'id');
+        return $this->hasMany('App\Mariadb\Frontend\Fan', 'fan_id', 'id');
     }
 
     /**

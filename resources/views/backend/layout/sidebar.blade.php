@@ -10,23 +10,23 @@
           <span class="pull-right-container"></span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="/admin/permissions"><i class="fa fa-circle-o"></i> 权限管理</a></li>
-          <li><a href="/admin/users"><i class="fa fa-circle-o"></i> 用户管理</a></li>
-          <li><a href="/admin/roles"><i class="fa fa-circle-o"></i> 角色管理</a></li>
+          <li><a href="/backend/permissions"><i class="fa fa-circle-o"></i> 权限管理</a></li>
+          <li><a href="/backend/users"><i class="fa fa-circle-o"></i> 用户管理</a></li>
+          <li><a href="/backend/roles"><i class="fa fa-circle-o"></i> 角色管理</a></li>
         </ul>
       </li>
       <li class="active treeview">
-        <a href="/admin/posts">
+        <a href="/backend/posts">
           <i class="fa fa-dashboard"></i> <span>文章管理</span>
         </a>
       </li>
       <li class="active treeview">
-        <a href="/admin/topics">
+        <a href="/backend/topics">
           <i class="fa fa-dashboard"></i> <span>专题管理</span>
         </a>
       </li>
       <li class="active treeview">
-        <a href="/admin/notices">
+        <a href="/backend/notices">
           <i class="fa fa-dashboard"></i> <span>通知管理</span>
         </a>
       </li>

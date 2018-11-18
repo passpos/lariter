@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Mariadb\Frontend\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class UserController extends Controller {
 
@@ -53,7 +52,7 @@ class UserController extends Controller {
                 ->withCount(['posts', 'fans', 'stars'])
                 ->get();
 
-        return view('user.homepage', compact('homepageUser', 'posts', 'fanUsers', 'starUsers'));
+        return view('frontend.user.homepage', compact('homepageUser', 'posts', 'fanUsers', 'starUsers'));
     }
 
     // 关注某个用户
@@ -80,17 +79,12 @@ class UserController extends Controller {
 
     // 个人空间
     public function userField() {
-        return view('user.field');
+        return view('frontend.user.field');
     }
 
     // 个人设置页
     public function userDetails() {
-        return view('user.details');
-    }
-
-    // 个人设置行为
-    public function setDetails(Request $request) {
-        
+        return view('frontend.user.details');
     }
 
 }

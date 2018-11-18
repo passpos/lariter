@@ -1,4 +1,4 @@
-@extends('layout.editor')
+@extends('frontend.layout.editor')
 @section('content')
 <form action="/posts/store" method="POST" style="width:800px">
   @csrf
@@ -14,7 +14,7 @@
     </textarea>
   </div>
 
-  @include('layout.errors')
+  @include('frontend.layout.errors')
 
   {{-- 提交按钮 --}}
   <button  id="passage-store" type="submit" class="btn btn-default">保存</button>

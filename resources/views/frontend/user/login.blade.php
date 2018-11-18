@@ -49,7 +49,7 @@
           </label>
         </div>
         
-        @include('layout.errors')
+        @include('frontend.layout.errors')
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
         <a href="/user/register" class="btn btn-lg btn-primary btn-block" type="submit">去注册>></a>

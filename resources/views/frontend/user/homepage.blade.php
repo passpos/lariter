@@ -1,4 +1,4 @@
-@extends('layout.user')
+@extends('frontend.layout.user')
 @section('content')
 
 <div class="col-sm-8">
@@ -6,7 +6,7 @@
   <blockquote>
     <p><img src="{{ $homepageUser->avatar }}" alt="" class="img-rounded" style="border-radius:500px; height: 40px">{{ $homepageUser->name }}</p>
     <footer>关注：{{ $homepageUser->stars_count }}｜粉丝：{{ $homepageUser->fans_count }}｜文章：{{ $homepageUser->posts_count }}</footer>
-    @include('user.components.focus',['target_user' => $homepageUser])
+    @include('frontend.user.components.focus',['target_user' => $homepageUser])
   </blockquote>
 </div>
 

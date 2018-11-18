@@ -1,4 +1,4 @@
-@extends("layout.index")
+@extends("front.layout.index")
 @section("content")
 {{-- 专题详情头部 --}}
 <div class="col-sm-8">

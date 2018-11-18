@@ -25,7 +25,7 @@
 
   <body>
 
-    @include('layout.nav')
+    @include('frontend.layout.nav')
     <div class="container">
       <div class="bloger">
         <div class="blog-header"></div>
@@ -34,7 +34,7 @@
         </div><!-- /.row -->
       </div>
     </div><!-- /.container -->
-    @include('layout.footer')
+    @include('frontend.layout.footer')
 
     <!---------------- Bootstrap core JavaScript ---------------->
     <!-- Placed at the end of the document so the pages load faster -->

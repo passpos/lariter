@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Topic;
-use App\Post;
-use App\PostTopic;
+use App\Mariadb\Frontend\Topic;
+use App\Mariadb\Frontend\Post;
+use App\Mariadb\Frontend\PostTopic;
 use Illuminate\Support\Facades\Auth;
 
 class TopicController extends Controller {
@@ -29,7 +29,7 @@ class TopicController extends Controller {
         $posts = $istopic->posts()->orderBy('created_at', 'desc')->take(10)->get();
         // 我的未投稿的文章
         $myposts = Post::authorBy(Auth::id())->topicNotBy($topic_id)->get();
-        return view('topic/show', compact('istopic', 'posts', 'myposts'));
+        return view('frontend.topic.show', compact('istopic', 'posts', 'myposts'));
     }
 
     /**

@@ -17,12 +17,15 @@ Route::prefix('backend')->group(function () {
         // 后台首页
         Route::get('index', 'PanelController@index');
         
-        // 后台管理人员
+        // 后台管理人员模块
         Route::get('users','UserController@index');
         // 添加管理人员
         Route::get('users/create','UserController@create');
         // 存储添加的管理人员
         Route::post('users/store','UserController@store');
         
+        // 文章审核模块
+        Route::get('posts', 'PostController@index');
+        Route::post('posts/{status}', 'PostController@status');
     });
 });

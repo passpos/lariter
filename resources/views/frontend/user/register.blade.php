@@ -56,7 +56,7 @@
         <label class="sr-only">重复密码</label>
         <input type="password" name="password_confirmation" class="form-control" placeholder="重复输入密码" required>
 
-        @include('layout.errors')
+        @include('frontend.layout.errors')
         <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
       </form>
 

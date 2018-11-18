@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
-use App\Comment;
-use App\Up;
+use App\Mariadb\Frontend\Post;
+use App\Mariadb\Frontend\Comment;
+use App\Mariadb\Frontend\Up;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +18,7 @@ class PostController extends Controller {
         $posts = Post::orderBy('created_at', 'desc')
                 ->withCount(['comments', 'ups'])
                 ->paginate(5);
-        return view('post.index', ['posts' => $posts]);
+        return view('frontend.post.index', ['posts' => $posts]);
     }
 
     //文章详情
@@ -39,7 +39,7 @@ class PostController extends Controller {
 
     //创建文章
     public function create() {
-        return view('post.create', ['title' => '创作一篇文章!']);
+        return view('frontend.post.create', ['title' => '创作一篇文章!']);
     }
 
     /**
@@ -103,7 +103,7 @@ class PostController extends Controller {
 
     // 编辑文章
     public function edit(Post $post) {
-        return view('post.edit', compact('post'), ['title' => $post->title]);
+        return view('frontend.post.edit', compact('post'), ['title' => $post->title]);
     }
 
     // 更新文章

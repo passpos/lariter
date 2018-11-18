@@ -1,4 +1,4 @@
-@extends('layout.index')
+@extends('frontend.layout.index')
 @section('content')
 <div class="col-sm-8 blog-main">
   <div>

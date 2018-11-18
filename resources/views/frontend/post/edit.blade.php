@@ -1,4 +1,4 @@
-@extends('layout.editor')
+@extends('frontend.layout.editor')
 @section('content')
 <form action="/posts/store/{{$post->id}}" method="POST" style="width:800px">
   {{method_field("PUT")}}
@@ -16,7 +16,7 @@
     </textarea>
   </div>
 
-  @include('layout.errors')
+  @include('frontend.layout.errors')
 
   <button type="submit" class="btn btn-default">提交</button>
 </form>
