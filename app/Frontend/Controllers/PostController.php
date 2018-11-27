@@ -29,7 +29,7 @@ class PostController extends Controller {
         $title = $post->title;
         $author = $post->user->name;
         $postid = $post->id;
-        return view('post.passage', [
+        return view('frontend.post.passage', [
             'post' => $post,
             'title' => $title,
             'author' => $author,
@@ -125,8 +125,7 @@ class PostController extends Controller {
     /**
      * 图片上传与路径返回
      * 
-     * @TODO
-     * 上传图片，返回文本编辑器相应的图片链接
+     * TODO：上传图片，返回文本编辑器相应的图片链接
      */
     public function uploadImage(Request $request) {
 

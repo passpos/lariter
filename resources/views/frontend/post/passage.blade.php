@@ -64,7 +64,7 @@
       <input type="hidden" name="post_id" value="{{ $postid }}"/>
       <li class="list-group-item">
         <textarea name="content" class="form-control" rows="10"></textarea>
-        @include("front.layout.errors")
+        @include("frontend.layout.errors")
         <button class="btn btn-default" type="submit">提交</button>
       </li>
     </form>
