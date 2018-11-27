@@ -3,8 +3,13 @@
 namespace App\Backend\Controllers;
 
 class PanelController extends Controller {
+
     public function index() {
-        return view('backend.panel.index');
+        if (Auth::id() != null) {
+            return view('backend.panel.index');
+        } else {
+            return redirect('/backend/login');
+        }
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Frontend\Controllers;
 
 use App\Mariadb\Frontend\Topic;
 use App\Mariadb\Frontend\Post;

@@ -13,7 +13,12 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        /**
+         * 注册Elasticsearch命令
+         * 由于laravel会自动解析App\Console\目录下的命令，
+         * 所以下面不用在写这一部分路径了。
+         */
+        Commands\ESInit::class
     ];
 
     /**

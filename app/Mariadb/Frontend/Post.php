@@ -4,9 +4,12 @@ namespace App\Mariadb\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Laravel\Scout\Searchable;
 
 // 对应表“posts”
 class Post extends Model {
+
+    use Searchable;
 
     // 指明表名
     protected $table = 'posts';
@@ -18,6 +21,23 @@ class Post extends Model {
     protected $fillable = ['title', 'content', 'user_id'];
     // 开启自动维护时间戳
     public $timestamps = true;
+
+    // 定义索引中的type
+    public function searchableAs() {
+        return 'post';
+    }
+
+    /**
+     * 定义有哪些字段，持久化到搜索索引，即需要可被搜索。
+     *   默认是：模型的所有字段都可搜索；
+     *   使用toSearchableArray()方法进行重新定义。
+     */
+    public function toSearchableArray() {
+        return [
+            'title' => $this->title,
+            'content' => $this->content,
+        ];
+    }
 
     /**
      * 用户关联（将文章和用户关联起来），用于访问关联的数据。

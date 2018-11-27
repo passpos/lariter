@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Frontend\Controllers;
 
 use App\Mariadb\Frontend\Post;
 use App\Mariadb\Frontend\Comment;
@@ -198,6 +198,22 @@ class PostController extends Controller {
     public function unup(Post $post) {
         $post->up(Auth::id())->delete();
         return back();
+    }
+
+    // 搜索功能模块
+    public function search() {
+
+        // 验证
+        $this->validate(request(), [
+            'query' => 'required'
+        ]);
+
+        // 逻辑
+        $query = request('query');
+        $posts = Post::search($query)->paginate(3);
+
+        // 渲染
+        return view('frontend.post.search', compact('query', 'posts'));
     }
 
 }

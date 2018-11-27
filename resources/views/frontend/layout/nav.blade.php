@@ -10,12 +10,15 @@
       <li>
         <a class="blog-nav-item" href="/notices" target="_new">通知</a>
       </li>
-      <li>
-        <input name="query" type="text" value="" class="form-control" style="margin-top:10px" placeholder="搜索词">
-      </li>
-      <li>
-        <button class="btn btn-default" style="margin-top:10px" type="submit">Go!</button>
-      </li>
+      <form method="POST" action="/posts/search">
+        @csrf
+        <li>
+          <input name="query" type="text" value="" class="form-control" style="margin-top:10px" placeholder="搜索词">
+        </li>
+        <li>
+          <button class="btn btn-default" style="margin-top:10px" type="submit">Go!</button>
+        </li>
+      </form>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">

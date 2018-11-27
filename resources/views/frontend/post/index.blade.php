@@ -57,7 +57,7 @@
         {{ $post->created_at->toFormattedDateString() }}
       </p>
       {!! str_limit($post->content, 0, '……') !!}
-      <p class="blog-post-meta">赞 {{ $post->ups_count }} | 评论 {{ $post->comments_count }}</p>
+      @include('frontend.post.components.postcount')
     </div>
     @endforeach
 
