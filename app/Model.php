@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Model as BaseModel;
  * 而是App\Model
  */
 class Model extends BaseModel{
-
+    
+    // 指定数据库连接
+    protected $connection = 'mysql';
     // 不可以注入的字段
     protected $guarded = [];
     // 开启自动维护时间戳
