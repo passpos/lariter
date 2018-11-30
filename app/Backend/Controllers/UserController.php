@@ -8,11 +8,11 @@ class UserController extends Controller {
 
     public function index() {
         $users = BackendUser::paginate(20);
-        return view('backend.user.index', ['users' => $users]);
+        return view('backend.user.index', ['users' => $users, 'title' => '用户管理']);
     }
 
     public function create() {
-        return view('backend.user.create');
+        return view('backend.user.create',['title' => '添加用户']);
     }
 
     public function store() {
@@ -26,4 +26,11 @@ class UserController extends Controller {
         return redirect("/backend/users" );
     }
 
+    public function role() {
+        return view('backend.user.role',['title' => '用户角色管理']);
+    }
+    
+    public function storeRole() {
+        
+    }
 }

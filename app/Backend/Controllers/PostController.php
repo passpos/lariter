@@ -8,7 +8,7 @@ class PostController extends Controller {
 
     public function index() {
         $posts = Post::withoutGlobalScope('avaiable')->where('status', 0)->orderBy('created_at', 'desc')->paginate(15);
-        return view('backend.post.index', compact('posts'));
+        return view('backend.post.index', compact('posts'),['title' => '文章管理']);
     }
 
     public function status(Post $post) {
