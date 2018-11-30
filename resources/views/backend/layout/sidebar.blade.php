@@ -10,9 +10,9 @@
           <span class="pull-right-container"></span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="/backend/permissions"><i class="fa fa-circle-o"></i> 权限管理</a></li>
           <li><a href="/backend/users"><i class="fa fa-circle-o"></i> 用户管理</a></li>
           <li><a href="/backend/roles"><i class="fa fa-circle-o"></i> 角色管理</a></li>
+          <li><a href="/backend/permissions"><i class="fa fa-circle-o"></i> 权限管理</a></li>
         </ul>
       </li>
       <li class="active treeview">

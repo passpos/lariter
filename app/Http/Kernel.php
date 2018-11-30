@@ -25,6 +25,9 @@ class Kernel extends HttpKernel
      * The application's route middleware groups.
      *
      * @var array
+     * 
+     * 下面中间件组中的中间件按照自上而下的顺序加载！
+     * 请勿随意调换上下位置！
      */
     protected $middlewareGroups = [
         'web' => [
@@ -53,12 +56,11 @@ class Kernel extends HttpKernel
         
         'backend' => [
             \App\Http\Middleware\EncryptCookies::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            'bindings',
         ]
     ];
 

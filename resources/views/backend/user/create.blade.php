@@ -13,6 +13,7 @@
             <h3 class="box-title">增加用户</h3>
           </div>
           <!-- /.box-header -->
+          
           <!-- form start -->
           <form role="form" action="/backend/users/store" method="POST">
             @csrf
@@ -22,7 +23,7 @@
                 <input type="text" class="form-control" name="name">
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">密码</label>
+                <label for="exampleInputPassword1">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
                 <input type="password" class="form-control" placeholder="Password" name="password">
               </div>
             </div>

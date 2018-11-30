@@ -37,13 +37,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'backend' => [
+            'driver' => 'session',
+            'provider' => 'backendusers',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
-        ],
-        'backend' => [
-            'driver' => 'session',
-            'provider' => 'backends',
         ],
     ],
     /*
@@ -67,7 +67,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Mariadb\Frontend\User::class,
         ],
-        'backends' => [
+        'backendusers' => [
             'driver' => 'eloquent',
             'model' => App\Mariadb\Backend\BackendUser::class,
         ],

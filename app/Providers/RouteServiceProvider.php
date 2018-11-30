@@ -47,6 +47,20 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
+     * Define the "Backend" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapBackendRoutes()
+    {
+        Route::middleware('backend')
+             ->namespace('App\Backend\Controllers')
+             ->group(base_path('routes/backend.php'));
+    }
+    
+    /**
      * Define the "web" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
@@ -88,18 +102,5 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace('App\Frontend\Controllers')
              ->group(base_path('routes/frontend.php'));
     }
-    
-    /**
-     * Define the "Backend" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapBackendRoutes()
-    {
-        Route::middleware('backend')
-             ->namespace('App\Backend\Controllers')
-             ->group(base_path('routes/backend.php'));
-    }
+
 }

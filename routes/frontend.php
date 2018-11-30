@@ -11,49 +11,41 @@
   |
  */
 
-// 文章首页、列表页
-Route::get('/', 'PostController@index');
 
 /**
- * 文章模块
+ * 用户模块
+ * 
+ *   用户注册链接，跳转到注册表单页
+ *   注册表单处理
+ * 
+ *   登录页面
+ *   登录表单数据处理，登录行为
+ *   登出行为
+ * 
+ *   个人中心/个人主页
+ *   个人空间
+ *   个人资料设置
  */
-Route::prefix('posts')->group(function () {
-    //文章列表页
-    Route::get('', 'PostController@index');
-    //文章详情页
-    Route::get('{post}', 'PostController@passage')->where('post', '[0-9]+');
+Route::prefix('user')->group(function () {
 
-    //创建、存储文章
-    Route::get('create', 'PostController@create');
-    Route::post('store', 'PostController@store');
-    //编辑、更新文章
-    Route::get('edit/{post}', 'PostController@edit')->where('post', '[0-9]+');
-    Route::put('store/{post}', 'PostController@update')->where('post', '[0-9]+');
-    //删除文章
-    Route::get('delete/{post}', 'PostController@delete');
+    Route::get('register', 'RegisterController@index');
+    Route::post('register', 'RegisterController@register');
 
-    //上传图片
-    Route::post('upload/image', 'PostController@uploadImage');
+    Route::get('login', 'LoginController@index');
+    Route::post('login', 'LoginController@login');
+    Route::get('logout', 'LoginController@logout');
 
-    // 提交评论
-    Route::post('comment/{post}', 'PostController@comment');
+    Route::get('homepage/{user}', 'UserController@userHomepage');
+    Route::get('field/{user}', 'UserController@userField');
+    Route::get('setting', 'UserController@userDetails');
+    Route::post('setting', 'UserController@setDetails');
 
-    // 点赞
-    Route::get('up/{post}', 'PostController@up');
-    // 取消点赞
-    Route::get('unup/{post}', 'PostController@unup');
-    
-    // 文章搜索
-    Route::post('search', 'PostController@search');
-    
-});
-
-/**
- * 专题模块
- *   专题显示
- *   向专题投稿
- */
-Route::prefix('topic')->group(function () {
-    Route::get('{topic_id}', 'TopicController@show');
-    Route::post('publish/{topic_id}', 'TopicController@publish');
+    /**
+     * 粉丝与关注
+     * 
+     *   关注某个用户
+     *   取消关注某个用户
+     */
+    Route::post('focus/{user}', 'UserController@doFocus');
+    Route::post('unfocus/{user}', 'UserController@unFocus');
 });

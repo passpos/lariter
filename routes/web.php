@@ -11,39 +11,47 @@
   |
  */
 
+
+// 文章首页、列表页
+Route::get('/', 'PostController@index')->name('home');
+
 /**
- * 用户模块
+ * 文章模块
+ * 
+ *   文章列表页
+ *   文章详情页
+ *   创建、存储文章页面
+ *   编辑、更新文章
+ *   删除文章
+ *   上传图片
+ *   提交评论
+ *   点赞
+ *   取消点赞
+ *   文章搜索
  */
-Route::prefix('user')->group(function () {
-
-    // 用户注册链接，跳转到注册表单页
-    Route::get('register', 'RegisterController@index');
-    // 注册表单处理
-    Route::post('register', 'RegisterController@register');
-
-    // 登录页面
-    Route::get('login', 'LoginController@index');
-    // 登录表单数据处理，登录行为
-    Route::post('login', 'LoginController@login');
-
-    // 登出行为
-    Route::get('logout', 'LoginController@logout');
-
-    // 个人中心/个人主页
-    Route::get('homepage/{user}', 'UserController@userHomepage');
-    // 个人空间
-    Route::get('field/{user}', 'UserController@userField');
-
-    // 个人资料设置
-    Route::get('setting', 'UserController@userDetails');
-    Route::post('setting', 'UserController@setDetails');
-
-    /**
-     * 粉丝与关注
-     * 
-     * 关注某个用户
-     */
-    Route::post('focus/{user}', 'UserController@doFocus');
-    // 取消关注某个用户
-    Route::post('unfocus/{user}', 'UserController@unFocus');
+Route::prefix('posts')->group(function () {
+    Route::get('', 'PostController@index');
+    Route::get('{post}', 'PostController@passage')->where('post', '[0-9]+');
+    Route::get('create', 'PostController@create');
+    Route::post('store', 'PostController@store');
+    Route::get('edit/{post}', 'PostController@edit')->where('post', '[0-9]+');
+    Route::put('store/{post}', 'PostController@update')->where('post', '[0-9]+');
+    Route::get('delete/{post}', 'PostController@delete');
+    Route::post('upload/image', 'PostController@uploadImage');
+    Route::post('comment/{post}', 'PostController@comment');
+    Route::get('up/{post}', 'PostController@up');
+    Route::get('unup/{post}', 'PostController@unup');
+    Route::post('search', 'PostController@search');
 });
+
+/**
+ * 专题模块
+ * 
+ *   专题显示
+ *   向专题投稿
+ */
+Route::prefix('topic')->group(function () {
+    Route::get('{topic_id}', 'TopicController@show');
+    Route::post('publish/{topic_id}', 'TopicController@publish');
+});
+

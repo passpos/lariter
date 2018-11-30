@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 class LoginController extends Controller {
 
     public function show() {
-        return view('backend.login.show');
+        return view('backend.login.show',['title' => '后台登录']);
     }
 
     public function login(Request $request) {

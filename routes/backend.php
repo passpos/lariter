@@ -12,15 +12,24 @@ Route::prefix('backend')->group(function () {
      *   登录表单数据处理，登录行为
      *   登出行为
      */
-    Route::get('login', 'LoginController@show');
+    Route::get('', 'LoginController@show');
+    Route::get('login', 'LoginController@show')->name('login');;
     Route::post('login', 'LoginController@login');
     Route::get('logout', 'LoginController@logout');
 
+    /**
+     * 后台管理页面与逻辑
+     * 
+     *   这里的“auth”用于进行登录状态的认证；
+     *   实现原理是检查登录后的session会话信息进行认证；
+     *     通过在/config/auth.php中创建新的“guard”，其驱动当然是session了；
+     *     同时为此guard添加provider，驱动为eloquent，使用的orm模型当然是backenduser了；
+     *     此处，从session中取出登录信息，然后与数据表中的用户信息进行比对，实现认证和访问。
+     *     如果尚未登录，session中则没有已登录的用户信息；
+     * 
+     */
     Route::group(['middleware' => 'auth:backend'], function() {
-        /**
-         * 后台首页
-         */
-        Route::get('', 'PanelController@index');
+
         Route::get('index', 'PanelController@index');
 
         /**
@@ -49,10 +58,10 @@ Route::prefix('backend')->group(function () {
          */
         Route::get('roles', 'RoleController@index');
         Route::get('roles/create', 'RoleController@create');
-        Route::post('roles/create', 'RoleController@store');
-        Route::get('roles/permission', 'RoleController@permission');
+        Route::post('roles/store', 'RoleController@store');
+        Route::get('roles/permission/{role}', 'RoleController@permission');
         Route::post('roles/permission/{role}', 'RoleController@storePeimission');
-        
+
         /**
          * 权限管理模块
          * 
@@ -62,8 +71,8 @@ Route::prefix('backend')->group(function () {
          */
         Route::get('permissions', 'PermissionController@index');
         Route::get('permissions/create', 'PermissionController@create');
-        Route::post('permissions', 'PermissionController@store');
-        
+        Route::post('permissions/store', 'PermissionController@store');
+
         /**
          * 文章审核模块
          * 
@@ -72,6 +81,19 @@ Route::prefix('backend')->group(function () {
          */
         Route::get('posts', 'PostController@index');
         Route::post('posts/status', 'PostController@status');
-        
+
+        /**
+         * 专题管理模块
+         */
+        Route::get('topics', 'TopicController@index');
+        Route::get('topics/create', 'TopicController@create');
+        Route::post('topics/store', 'TopicController@store');
+
+        /**
+         * 通知管理模块
+         */
+        Route::get('notices', 'NoticeController@index');
+        Route::get('notices/create', 'NoticeController@create');
+        Route::post('notices/store', 'NoticeController@store');
     });
 });
