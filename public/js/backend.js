@@ -9,6 +9,10 @@ $(".post_audit").click(function(event) {
     var post_id = target.attr('post_id');
     var status = target.attr('post-action-status');
 
+
+/**
+ * @TODO 修复发送数据的URL，数据内容
+ */
     $.ajax({
         url: '/backend/posts/status',
         method: 'POST',

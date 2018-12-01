@@ -13,7 +13,7 @@ Route::prefix('backend')->group(function () {
      *   登出行为
      */
     Route::get('', 'LoginController@show');
-    Route::get('login', 'LoginController@show')->name('login');;
+    Route::get('login', 'LoginController@show')->name('login');
     Route::post('login', 'LoginController@login');
     Route::get('logout', 'LoginController@logout');
 
@@ -29,7 +29,9 @@ Route::prefix('backend')->group(function () {
      * 
      */
     Route::group(['middleware' => 'auth:backend'], function() {
-
+        /**
+         * 后台首页
+         */
         Route::get('index', 'PanelController@index');
 
         /**
@@ -80,7 +82,7 @@ Route::prefix('backend')->group(function () {
          *   文章审核逻辑
          */
         Route::get('posts', 'PostController@index');
-        Route::post('posts/status', 'PostController@status');
+        Route::post('posts/status/{$post}', 'PostController@status');
 
         /**
          * 专题管理模块

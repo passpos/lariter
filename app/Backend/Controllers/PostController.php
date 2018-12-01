@@ -11,9 +11,15 @@ class PostController extends Controller {
         return view('backend.post.index', compact('posts'),['title' => '文章管理']);
     }
 
+    /**
+     * @todo 文章审核问题的修复，参测由模型绑定异常和路由错误导致；
+     * 
+     * @param  Post $post 由路由传过来的参数；
+     * 
+     * @return json error 错误信息
+     */
     public function status(Post $post) {
         $this->validate(request(), [
-            'post_id' => 'required|integer',
             'status' => 'required|integer:1,-1'
         ]);
         $post->status = request('status');

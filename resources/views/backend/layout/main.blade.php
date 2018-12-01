@@ -51,18 +51,14 @@
     </div>
     <!-- ./wrapper -->
 
-    <script src="http://192.168.0.2:9999/js/jquery-3.3.1/jquery.min.js"></script>
-    <script src="http://192.168.0.2:9999/js/bootstrap-3.3.7/bootstrap.min.js"></script>
+    <script src="/js/jquery-3.3.1/jquery.min.js"></script>
+    <script src="http://localhost:9999/js/bootstrap-3.3.7/bootstrap.min.js"></script>
     <!-- jQuery 2.2.3 -->
     <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button);
-    </script>
-    <!-- Bootstrap 3.3.6 -->
-    <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
+    <script>$.widget.bridge('uibutton', $.ui.button);</script>
     <!-- Sparkline -->
     <script src="/adminlte/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!-- jvectormap -->
