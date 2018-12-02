@@ -18,10 +18,7 @@ class BackendPermission extends Model {
      */
     public function roles() {
         return $this->belongsTo('App\Mariadb\Backend\BackendRole', 'backend_role_permission', 'permission_id', 'role_id')
-                        ->withPivot([
-                            'permission_id',
-                            'role_id'
-        ]);
+                        ->withPivot(['permission_id','role_id']);
     }
 
 }

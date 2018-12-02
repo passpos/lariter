@@ -12,40 +12,23 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <form action="/backend/roles/permission/1" method="POST">
+          <form action="/backend/roles/permission/{{ $role->id}}" method="POST">
             @csrf
             <div class="form-group">
+              @foreach($permissions as $permission)
               <div class="checkbox">
                 <label>
                   <input type="checkbox" name="permissions[]"
+                         @if($itsPermissions->contains($permission))
                          checked
-                         value="1">
-                  system
+                         @endif
+                         value="{{ $permission->id }}">
+                  {{ $permission->name }}
                 </label>
               </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="permissions[]"
-                         checked
-                         value="2">
-                  post
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="permissions[]"
-                         value="3">
-                  topic
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="permissions[]"
-                         value="4">
-                  notice
-                </label>
-              </div>
+              @endforeach
             </div>
+
             <div class="box-footer">
               <button type="submit" class="btn btn-primary">提交</button>
             </div>

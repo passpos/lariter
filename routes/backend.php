@@ -12,7 +12,6 @@ Route::prefix('backend')->group(function () {
      *   登录表单数据处理，登录行为
      *   登出行为
      */
-    Route::get('', 'LoginController@show');
     Route::get('login', 'LoginController@show')->name('login');
     Route::post('login', 'LoginController@login');
     Route::get('logout', 'LoginController@logout');
@@ -32,6 +31,7 @@ Route::prefix('backend')->group(function () {
         /**
          * 后台首页
          */
+        Route::get('', 'PanelController@index');
         Route::get('index', 'PanelController@index');
 
         /**
@@ -62,7 +62,7 @@ Route::prefix('backend')->group(function () {
         Route::get('roles/create', 'RoleController@create');
         Route::post('roles/store', 'RoleController@store');
         Route::get('roles/permission/{role}', 'RoleController@permission');
-        Route::post('roles/permission/{role}', 'RoleController@storePeimission');
+        Route::post('roles/permission/{role}', 'RoleController@storePermission');
 
         /**
          * 权限管理模块

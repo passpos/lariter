@@ -2,18 +2,28 @@
 
 namespace App\Backend\Controllers;
 
-class PermissionController extends Controller
-{
+use App\Mariadb\Backend\BackendPermission;
+
+class PermissionController extends Controller {
+
     //
     public function index() {
-        return view('backend.permission.index',['title' => '权限管理']);
+        $permissions = BackendPermission::paginate(15);
+        $title = '权限管理';
+        return view('backend.permission.index', compact('permissions', 'title'));
     }
-    
+
     public function create() {
-        return view('backend.permission.create',['title' => '增加权限']);
+        return view('backend.permission.create', ['title' => '增加权限']);
     }
-    
+
     public function store() {
-        
+        $this->validate(request(), [
+            'name' => 'required|string',
+            'description' => '',
+        ]);
+        BackendPermission::create(request(['name', 'description']));
+        return redirect('backend/permissions');
     }
+
 }

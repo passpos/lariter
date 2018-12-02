@@ -32,16 +32,16 @@ class CreatePermissionAndRolesTable extends Migration {
         // 角色权限表
         Schema::create('backend_role_permission', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('role_id');
-            $table->integer('permission_id');
+            $table->integer('role_id')->defaule('');
+            $table->integer('permission_id')->defaule('');
             $table->timestamps();
         });
 
         // 用户角色表
         Schema::create('backend_user_role', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('role_id');
+            $table->integer('user_id')->defaule('');
+            $table->integer('role_id')->defaule('');
             $table->timestamps();
         });
     }

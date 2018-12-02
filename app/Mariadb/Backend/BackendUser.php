@@ -14,21 +14,24 @@ class BackendUser extends Authenticatable {
     /**
      * 用户有哪些角色=====用户关联角色
      *   当前模型“用户”->$this实例化，应用（关联）到一个或多个角色；
+     * 
+     * withTimestamps()
+     *   多对多关联中，通过User模型访问中间表User-Role，需要加上此方法，才会自动维护时间戳；
      */
     public function roles() {
-        return $this->belongsToMany('App\Mariadb\Backend\BackendRole', 'backend_user_role', 'user_id', 'role_id');
+        return $this->belongsToMany('App\Mariadb\Backend\BackendRole', 'backend_user_role', 'user_id', 'role_id')->withTimestamps();
     }
 
     /**
      * 判断一个用户（是否）有某个角色身份
      * 
-     * @param     array        $roles   BackendRole模型的colection，角色模型对象；
+     * @param     array        $role   BackendRole模型的colection，角色模型对象；
      * @return    boolean      返回布尔值；
      * @function  intersect()  集合(结果集，collection)辅助函数，由$roles参数进行调用，返回集合的交集；
      * 
      */
-    public function isInRoles($roles) {
-        return !!$roles->intersect($this->roles)->count()->withPivot([
+    public function isInRoles($role) {
+        return !!$role->intersect($this->role)->count()->withPivot([
                     'user_id',
                     'role_id'
         ]);
@@ -49,7 +52,7 @@ class BackendUser extends Authenticatable {
      * 
      * @param string $role Description
      */
-    public function deleteRole($role) {
+    public function dimissionRole($role) {
         return $this->roles()->detach($role);
     }
 

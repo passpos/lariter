@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model as BaseModel;
  */
 class Model extends BaseModel{
 
+    protected $connection = 'mysql';
     // 不可以注入的字段
     protected $guarded = [];
     // 开启自动维护时间戳

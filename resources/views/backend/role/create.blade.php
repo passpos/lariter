@@ -13,7 +13,7 @@
             <h3 class="box-title">增加角色</h3>
           </div>
           <!-- /.box-header -->
-          
+
           <!-- form start -->
           <form role="form" action="/backend/roles/store" method="POST">
             @csrf
@@ -23,18 +23,20 @@
                 <input type="text" class="form-control" name="name">
               </div>
             </div>
+
             <div class="box-body">
               <div class="form-group">
                 <label for="exampleInputEmail1">描&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;述</label>
                 <input type="text" class="form-control" name="description">
               </div>
             </div>
+
             <!-- /.box-body -->
             <div class="box-footer">
               <button type="submit" class="btn btn-primary">提交</button>
             </div>
           </form>
-          
+
         </div>
       </div>
     </div>

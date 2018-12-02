@@ -54,21 +54,21 @@ class UserController extends Controller {
      */
     public function storeRole(BackendUser $user) {
         $this->validate(request(), [
-            'roles' => 'requireed|array'
+            'roles' => 'required|array'
         ]);
 
         $roles = BackendRole::findMany(request('roles'));
-
         $itsRoles = $user->roles;
-
         $plusRoles = $roles->diff($itsRoles);
+        $minusRoles = $itsRoles->diff($roles);
+
         foreach ($plusRoles as $plusRole) {
             $user->asRole($plusRole);
         }
-        $minusRoles = $itsRoles->diff($roles);
         foreach ($minusRoles as $minusRole) {
-            $user->asRole($minusRole);
+            $user->dimissionRole($minusRole);
         }
+        return back();
     }
 
 }

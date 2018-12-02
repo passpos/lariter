@@ -12,46 +12,27 @@
         </div>
         <a type="button" class="btn " href="/backend/permissions/create" >增加权限</a>
         <!-- /.box-header -->
-        
+
         <div class="box-body">
           <table class="table table-bordered">
             <tbody><tr>
-                <th style="width: 10px">#</th>
+                <th style="width: 10px">id</th>
                 <th>权限名称</th>
                 <th>描述</th>
                 <th>操作</th>
               </tr>
+              @foreach($permissions as $permission)
               <tr>
-                <td>1.</td>
-                <td>system</td>
-                <td>系统管理</td>
-                <td>
-                </td>
+                <td>{{ $permission->id }}.</td>
+                <td>{{ $permission->name }}</td>
+                <td>{{ $permission->description }}</td>
+                <td></td>
               </tr>
-              <tr>
-                <td>2.</td>
-                <td>post</td>
-                <td>文章管理</td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td>3.</td>
-                <td>topic</td>
-                <td>专题管理</td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td>4.</td>
-                <td>notice</td>
-                <td>通知管理</td>
-                <td>
-                </td>
-              </tr>
-            </tbody></table>
+              @endforeach
+            </tbody>
+          </table>
         </div>
-
+        {{ $permissions->links() }}
       </div>
     </div>
   </div>

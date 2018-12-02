@@ -14,46 +14,27 @@
         <!-- /.box-header -->
         <div class="box-body">
           <table class="table table-bordered">
-            <tbody><tr>
+            <tbody>
+              <tr>
                 <th style="width: 10px">#</th>
                 <th>角色名称</th>
                 <th>角色描述</th>
                 <th>操作</th>
               </tr>
+              @foreach($roles as $role)
               <tr>
-                <td>1.</td>
-                <td>sys-manager</td>
-                <td>系统管理员</td>
+                <td>{{ $role->id }}.</td>
+                <td>{{ $role->name }}</td>
+                <td>{{ $role->description }}</td>
                 <td>
-                  <a type="button" class="btn" href="/backend/roles/permission/1" >权限管理</a>
+                  <a type="button" class="btn" href="/backend/roles/permission/{{ $role->id }}" >权限管理</a>
                 </td>
               </tr>
-              <tr>
-                <td>2.</td>
-                <td>post-manager</td>
-                <td>文章运营人员</td>
-                <td>
-                  <a type="button" class="btn" href="/backend/roles/permission/2" >权限管理</a>
-                </td>
-              </tr>
-              <tr>
-                <td>3.</td>
-                <td>topic-manager</td>
-                <td>专题管理员</td>
-                <td>
-                  <a type="button" class="btn" href="/backend/roles/permission/3" >权限管理</a>
-                </td>
-              </tr>
-              <tr>
-                <td>4.</td>
-                <td>notice-manager</td>
-                <td>通知管理员</td>
-                <td>
-                  <a type="button" class="btn" href="/backend/roles/permission/4" >权限管理</a>
-                </td>
-              </tr>
-            </tbody></table>
+              @endforeach
+            </tbody>
+          </table>
         </div>
+        {{ $roles->links() }}
 
       </div>
     </div>
