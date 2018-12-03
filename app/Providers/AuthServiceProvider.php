@@ -4,9 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Mariadb\Backend\BackendPermission;
 
-class AuthServiceProvider extends ServiceProvider
-{
+class AuthServiceProvider extends ServiceProvider {
+
     /**
      * The policy mappings for the application.
      *
@@ -22,10 +23,24 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot() {
         $this->registerPolicies();
 
-        //
+        /**
+         * 取出所有权限；
+         * 循环输出权限模型为$permission；
+         * 对每一个权限模型（权限的name字段）都定义一个Gate；
+         * 
+         * 完成上面的任务后，执行一个（包含User对象（$user）的）匿名函数[闭包]；
+         * 在匿名函数中，进行权限判断，并返回boolean；
+         * 判断的原理仍是ORM模型关联和在User模型中预定义的函数；
+         */
+        $permissions = BackendPermission::all();
+        foreach ($permissions as $permission) {
+            Gate::define($permission->name, function($user) use($permission) {
+                return $user->hasPermission($permission);
+            });
+        }
     }
+
 }

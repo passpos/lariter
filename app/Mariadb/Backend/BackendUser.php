@@ -31,10 +31,7 @@ class BackendUser extends Authenticatable {
      * 
      */
     public function isInRoles($role) {
-        return !!$role->intersect($this->role)->count()->withPivot([
-                    'user_id',
-                    'role_id'
-        ]);
+        return !!$role->intersect($this->role)->count();
     }
 
     /**

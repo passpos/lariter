@@ -35,67 +35,88 @@ Route::prefix('backend')->group(function () {
         Route::get('index', 'PanelController@index');
 
         /**
-         * 后台管理人员模块
-         * 
-         *   管理人员列表页
-         *   添加管理人员
-         *   存储添加的管理人员
-         *   用户的角色与职位管理页面
-         *   用户的角色与职位管理逻辑
+         * SystemManage、PostManage、TopicManage、NoticeManage权限需要在权限表中；
+         * 因为此处（路由）是基于权限的权限认证，这几个关键字自然必须是权限表中的字段，而非角色或用户；
          */
-        Route::get('users', 'UserController@index');
-        Route::get('users/create', 'UserController@create');
-        Route::post('users/store', 'UserController@store');
-        Route::get('users/role/{user}', 'UserController@role');
-        Route::post('users/role/{user}', 'UserController@storeRole');
+        Route::group(['middleware' => 'can:SystemManage'], function() {
+            /**
+             * 后台管理人员模块
+             * 
+             *   管理人员列表页
+             *   添加管理人员
+             *   存储添加的管理人员
+             *   用户的角色与职位管理页面
+             *   用户的角色与职位管理逻辑
+             */
+            Route::get('users', 'UserController@index');
+            Route::get('users/create', 'UserController@create');
+            Route::post('users/store', 'UserController@store');
+            Route::get('users/role/{user}', 'UserController@role');
+            Route::post('users/role/{user}', 'UserController@storeRole');
+
+            /**
+             * 角色与职位管理模块
+             * 
+             *   角色列表页
+             *   角色创建页
+             *   角色创建逻辑
+             *   角色的权限详情页面
+             *   角色的权限管理逻辑
+             */
+            Route::get('roles', 'RoleController@index');
+            Route::get('roles/create', 'RoleController@create');
+            Route::post('roles/store', 'RoleController@store');
+            Route::get('roles/permission/{role}', 'RoleController@permission');
+            Route::post('roles/permission/{role}', 'RoleController@storePermission');
+
+            /**
+             * 权限管理模块
+             * 
+             *   权限列表页面
+             *   权限创建页面
+             *   权限创建逻辑
+             */
+            Route::get('permissions', 'PermissionController@index');
+            Route::get('permissions/create', 'PermissionController@create');
+            Route::post('permissions/store', 'PermissionController@store');
+        });
 
         /**
-         * 角色与职位管理模块
-         * 
-         *   角色列表页
-         *   角色创建页
-         *   角色创建逻辑
-         *   角色的权限详情页面
-         *   角色的权限管理逻辑
+         * PostManage权限需要在权限表中
          */
-        Route::get('roles', 'RoleController@index');
-        Route::get('roles/create', 'RoleController@create');
-        Route::post('roles/store', 'RoleController@store');
-        Route::get('roles/permission/{role}', 'RoleController@permission');
-        Route::post('roles/permission/{role}', 'RoleController@storePermission');
+        Route::group(['middleware' => 'can:PostManage'], function() {
+            /**
+             * 文章审核模块
+             * 
+             *   待审核文章列表页
+             *   文章审核逻辑
+             */
+            Route::get('posts', 'PostController@index');
+            Route::post('posts/status/{$post}', 'PostController@status');
+        });
 
         /**
-         * 权限管理模块
-         * 
-         *   权限列表页面
-         *   权限创建页面
-         *   权限创建逻辑
+         * TopicManage权限需要在权限表中
          */
-        Route::get('permissions', 'PermissionController@index');
-        Route::get('permissions/create', 'PermissionController@create');
-        Route::post('permissions/store', 'PermissionController@store');
+        Route::group(['middleware' => 'can:TopicManage'], function() {
+            /**
+             * 专题管理模块
+             */
+            Route::get('topics', 'TopicController@index');
+            Route::get('topics/create', 'TopicController@create');
+            Route::post('topics/store', 'TopicController@store');
+        });
 
         /**
-         * 文章审核模块
-         * 
-         *   待审核文章列表页
-         *   文章审核逻辑
+         * NoticeManage权限需要在权限表中
          */
-        Route::get('posts', 'PostController@index');
-        Route::post('posts/status/{$post}', 'PostController@status');
-
-        /**
-         * 专题管理模块
-         */
-        Route::get('topics', 'TopicController@index');
-        Route::get('topics/create', 'TopicController@create');
-        Route::post('topics/store', 'TopicController@store');
-
-        /**
-         * 通知管理模块
-         */
-        Route::get('notices', 'NoticeController@index');
-        Route::get('notices/create', 'NoticeController@create');
-        Route::post('notices/store', 'NoticeController@store');
+        Route::group(['middleware' => 'can:NoticeManage'], function() {
+            /**
+             * 通知管理模块
+             */
+            Route::get('notices', 'NoticeController@index');
+            Route::get('notices/create', 'NoticeController@create');
+            Route::post('notices/store', 'NoticeController@store');
+        });
     });
 });
