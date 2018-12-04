@@ -2,12 +2,12 @@
 
 namespace App\Backend\Controllers;
 
-use App\Mariadb\Backend\Post;
+use App\Mariadb\Backend\BackendPost;
 
 class PostController extends Controller {
 
     public function index() {
-        $posts = Post::withoutGlobalScope('avaiable')->where('status', 0)->orderBy('created_at', 'desc')->paginate(15);
+        $posts = BackendPost::withoutGlobalScope('avaiable')->where('status', 0)->orderBy('created_at', 'desc')->paginate(15);
         return view('backend.post.index', compact('posts'),['title' => '文章管理']);
     }
 
@@ -18,7 +18,7 @@ class PostController extends Controller {
      * 
      * @return json error 错误信息
      */
-    public function status(Post $post) {
+    public function status(BackendPost $post) {
         $this->validate(request(), [
             'status' => 'required|integer:1,-1'
         ]);

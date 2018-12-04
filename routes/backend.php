@@ -92,7 +92,7 @@ Route::prefix('backend')->group(function () {
              *   文章审核逻辑
              */
             Route::get('posts', 'PostController@index');
-            Route::post('posts/status/{$post}', 'PostController@status');
+            Route::post('posts/status/{post}', 'PostController@status');
         });
 
         /**
@@ -104,7 +104,8 @@ Route::prefix('backend')->group(function () {
              */
             Route::get('topics', 'TopicController@index');
             Route::get('topics/create', 'TopicController@create');
-            Route::post('topics/store', 'TopicController@store');
+            Route::post('topics', 'TopicController@store');
+            Route::delete('topics/{topic}', 'TopicController@destroy')->where('id', '[0-9]+');
         });
 
         /**

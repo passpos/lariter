@@ -6,7 +6,6 @@
   <div class="row">
     <div class="col-lg-10 col-xs-6">
       <div class="box">
-
         <div class="box-header with-border">
           <h3 class="box-title">专题列表</h3>
         </div>
@@ -14,26 +13,21 @@
         <!-- /.box-header -->
         <div class="box-body">
           <table class="table table-bordered">
-            <tbody><tr>
+            <tbody>
+              <tr>
                 <th style="width: 10px">#</th>
                 <th>专题名称</th>
                 <th>操作</th>
               </tr>
+              @foreach($topics as $topic)
               <tr>
-                <td>1</td>
-                <td>旅游</td>
-                <td>
-                  <a type="button" class="btn resource-delete" delete-url="/backend/topics/1" href="#" >删除</a>
-                </td>
+                <td>{{ $topic->id }}</td>
+                <td>{{ $topic->name }}</td>
+                <td class="btn resource-delete" delete-url="/backend/topics/{{$topic->id}}">删除</td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>轻松</td>
-                <td>
-                  <a type="button" class="btn resource-delete" delete-url="/backend/topics/2" href="#" >删除</a>
-                </td>
-              </tr>
-            </tbody></table>
+              @endforeach
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

@@ -29,8 +29,8 @@
                 <td>{{$post->updated_at}}</td>
                 <td>{{$post->status}}</td>
                 <td>
-                  <button type="button" class="btn btn-block btn-default post-audit" post-id="{{$post->id}}" post-action-status="1" >通过</button>
-                  <button type="button" class="btn btn-block btn-default post-audit" post-id="{{$post->id}}" post-action-status="-1" >拒绝</button>
+                  <button type="button" class="btn btn-block btn-default post-audit" post-id="{{ $post->id }}" post-action-status="1" >通过</button>
+                  <button type="button" class="btn btn-block btn-default post-audit" post-id="{{ $post->id }}" post-action-status="-1" >拒绝</button>
                 </td>
               </tr>
               @endforeach
