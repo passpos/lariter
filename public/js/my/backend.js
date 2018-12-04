@@ -4,16 +4,16 @@ $.ajaxSetup({
     }
 });
 
-$(".post_audit").click(function (event) {
+$(".post-audit").click(function (event) {
     var target = $(event.target);
-    var post_id = target.attr('post_id');
+    var post_id = target.attr('post-id');
     var status = target.attr('post-action-status');
 
     /**
      * @TODO 修复发送数据的URL，数据内容
      */
     $.ajax({
-        url: '/backend/posts/status' + post_id,
+        url: '/backend/posts/status/' + post_id,
         method: 'POST',
         data: {
             'status': status

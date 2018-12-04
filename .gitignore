@@ -1,5 +1,4 @@
 /node_modules
-/public
 /storage/*.key
 /vendor
 /.idea
@@ -11,5 +10,12 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
-*/adminlte*
+/public/css
+/public/font
+/public/img
+/public/js/bootstrap-*
+/public/js/jquery-*
+/public/js/kindeditor/*
+/public/js/wangEditor-*
+/public/js/adminlte*
 */课程材料*
