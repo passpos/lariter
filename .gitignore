@@ -16,6 +16,7 @@ yarn-error.log
 /public/js/bootstrap-*
 /public/js/jquery-*
 /public/js/kindeditor/*
+/public/js/NKeditor*
 /public/js/wangEditor-*
 /public/js/adminlte*
 */课程材料*

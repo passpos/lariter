@@ -40,7 +40,7 @@
     <script type="text/javascript" src="/js/libs/bootstrap-4.1.3/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/NKeditor5.0.3.2/NKeditor-all-min.js"></script>
     <script type="text/javascript" src="/js/NKeditor5.0.3.2/lang/zh-CN.js"></script>
-    <script type="text/javascript" src="/js/myEditor.js"></script>
+    <script type="text/javascript" src="/js/my/myEditor.js"></script>
 
   </body>
 </html>
