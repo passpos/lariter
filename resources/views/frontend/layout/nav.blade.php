@@ -8,24 +8,21 @@
         <a class="blog-nav-item" href="/posts/create" target="_new">写文章</a>
       </li>
       <li>
-        <a class="blog-nav-item" href="/notices" target="_new">通知</a>
+        <a class="blog-nav-item" href="/user/notices" target="_new">通知</a>
       </li>
-      <form method="POST" action="/posts/search">
-        @csrf
-        <li>
-          <input name="query" type="text" value="" class="form-control" style="margin-top:10px" placeholder="搜索词">
-        </li>
-        <li>
-          <button class="btn btn-default" style="margin-top:10px" type="submit">Go!</button>
-        </li>
-      </form>
+      <li>
+        <input name="query" type="text" class="form-control" style="margin-top:10px" placeholder="搜索词"/>
+      </li>
+      <li>
+        <button class="btn btn-default" style="margin-top:10px" type="submit">Go!</button>
+      </li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
       @if(Auth::id())
       <li class="dropdown">
         <div>
-          <img src="/storage/9f0b0809fd136c389c20f949baae3957/iBkvipBCiX6cHitZSdTaXydpen5PBiul7yYCc88O.jpeg" alt="" class="img-rounded" style="border-radius:500px; height: 30px">
+          <img src="/storage/9f0b0/iB.jpeg" alt="" class="img-rounded" style="border-radius:500px; height: 30px">
           <a href="#" class="blog-nav-item dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             {{ Auth::user()->name }}
             <span class="caret"></span>

@@ -96,4 +96,20 @@ class User extends Authenticatable {
         return $this->stars()->where('star_id', $uid)->count();
     }
 
+    /**
+     * 用户收到的通知
+     */
+    public function notices() {
+        return $this->belongsToMany('App\Mariadb\BackendFrontend\Notice', 'bf_notice_user', 'user_id', 'notice_id')
+                        ->withTimestamps()
+                        ->withPivot(['user_id', 'notice_id']);
+    }
+
+    /**
+     * 给用户增加通知
+     */
+    public function addNotice($notice) {
+        return $this->notices()->save($notice);
+    }
+
 }

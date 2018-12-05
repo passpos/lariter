@@ -201,7 +201,6 @@ class PostController extends Controller {
 
     // 搜索功能模块
     public function search() {
-
         // 验证
         $this->validate(request(), [
             'query' => 'required'

@@ -8,6 +8,9 @@
 
 namespace App\Backend\Controllers;
 
+use App\Mariadb\BackendFrontend\Notice;
+use App\Jobs\SendMessage;
+
 /**
  * Description of NoticeController
  *
@@ -17,15 +20,25 @@ class NoticeController extends Controller {
 
     //put your code here
     public function index() {
-        return view('backend.notification.index', [
-            'title' => '通知管理'
-        ]);
+        $notices = Notice::all();
+        $title = '通知管理';
+        return view('backend.notice.index', compact('notices', 'title'));
     }
 
     public function create() {
-        return view('backend.notification.create', [
+        return view('backend.notice.create', [
             'title' => '增加通知'
         ]);
+    }
+    
+    public function store() {
+        $this->validate(request(), [
+            'title' => 'required|string',
+            'content' => 'required|string',
+        ]);
+        $notice = Notice::create(request(['title', 'content']));
+        dispatch(new SendMessage($notice));
+        return redirect('/backend/notices');
     }
 
 }

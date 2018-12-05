@@ -37,6 +37,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'frontend' => [
+            'driver' => 'session',
+            'provider' => 'frontendusers',
+        ],
         'backend' => [
             'driver' => 'session',
             'provider' => 'backendusers',
@@ -64,6 +68,10 @@ return [
      */
     'providers' => [
         'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Mariadb\Frontend\User::class,
+        ],
+        'frontendusers' => [
             'driver' => 'eloquent',
             'model' => App\Mariadb\Frontend\User::class,
         ],

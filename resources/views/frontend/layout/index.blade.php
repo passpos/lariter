@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
     <title>Laravel for Blog</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="/css/bootstrap-4.1.3/bootstrap.min.css" rel="stylesheet">-->
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/blog.css">
 
@@ -20,24 +22,27 @@
 
     <![endif]-->
   </head>
-
   <body>
-    
     @include("frontend.layout.nav")
     <div class="container">
       <div class="blog-header"></div>
       <div class="row">
         @yield('content')
         @include('frontend.layout.sidebar')
-      </div><!-- /.row -->
-    </div><!-- /.container -->
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
     @include('frontend.layout.footer')
 
     <!-- 
           Bootstrap core JavaScript 
           Placed at the end of the document so the pages load faster
     -->
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-3.3.1/jquery.min.js"></script>
+    <script src="/js/bootstrap-4.1.3/bootstrap.min.js"></script>
+    <script src="/js/my/frontend.js"></script>
   </body>
 </html>

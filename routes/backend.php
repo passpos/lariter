@@ -117,7 +117,7 @@ Route::prefix('backend')->group(function () {
              */
             Route::get('notices', 'NoticeController@index');
             Route::get('notices/create', 'NoticeController@create');
-            Route::post('notices/store', 'NoticeController@store');
+            Route::post('notices', 'NoticeController@store');
         });
     });
 });

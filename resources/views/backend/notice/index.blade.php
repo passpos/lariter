@@ -14,33 +14,23 @@
         <!-- /.box-header -->
         <div class="box-body">
           <table class="table table-bordered">
-            <tbody><tr>
+            <tbody>
+              <tr>
                 <th style="width: 10px">#</th>
                 <th>通知名称</th>
                 <th>操作</th>
               </tr>
+              @foreach($notices as $notice)
               <tr>
-                <td>1</td>
-                <td>这是一个通知</td>
+                <td>{{ $notice->id }}</td>
+                <td>{{ $notice->title }}</td>
                 <td></td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>这是第二个通知</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>这是第三个通知</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>简书活动通告</td>
-                <td></td>
-              </tr>
-            </tbody></table>
+              @endforeach
+            </tbody>
+          </table>
         </div>
+
       </div>
     </div>
   </div>

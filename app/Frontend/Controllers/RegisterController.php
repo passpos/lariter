@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Frontend\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mariadb\Frontend\User;
@@ -38,7 +38,7 @@ class RegisterController extends Controller {
         // 加密后：
         $password = Hash::make($request->input('password'));
 
-        $user = User::create(compact('name', 'email', 'password'));
+        User::create(compact('name', 'email', 'password'));
 
         return redirect('/user/login');
     }

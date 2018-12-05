@@ -8,10 +8,6 @@ $(".post-audit").click(function (event) {
     var target = $(event.target);
     var post_id = target.attr('post-id');
     var status = target.attr('post-action-status');
-
-    /**
-     * @TODO 修复发送数据的URL，数据内容
-     */
     $.ajax({
         url: '/backend/posts/status/' + post_id,
         method: 'POST',
@@ -37,7 +33,6 @@ $(".resource-delete").click(function (event) {
     var target = $(event.target);
     event.preventDefault();
     var url = $(target).attr("delete-url");
-    var csrf = $('meta[name="csrf_token"]').attr('content');
 
     $.ajax({
         url: url,

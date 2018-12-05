@@ -1,28 +1,22 @@
 $.ajaxSetup({
     headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
 
-$(".post_audit").click(function(event) {
-    target = $(event.target);
-    var post_id = target.attr('post_id');
-    var status = target.attr('post-action-status');
+$(".btn-default").click(function (event) {
+    var target = $(event.target);
+    var query = $("input[name='query']").val();
 
     $.ajax({
-        url: '/backend/posts/status',
+        url: '/posts/search',
         method: 'POST',
         data: {
-            'post_id': post_id,
-            'status': status
+            'query': query
         },
-        datatype: 'json',
+        dataType: 'json',
         success: function (data) {
-            if (data.error !== 0) {
-                alert(data.msg);
-                return;
-            }
-            target.parent().parent().remove();
+            window.location.write(data);
         }
     });
 });

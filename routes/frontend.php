@@ -25,6 +25,11 @@
  *   个人中心/个人主页
  *   个人空间
  *   个人资料设置
+ * 
+ *   关注某个用户
+ *   取消关注某个用户
+ * 
+ *   通知
  */
 Route::prefix('user')->group(function () {
 
@@ -40,14 +45,10 @@ Route::prefix('user')->group(function () {
     Route::get('setting', 'UserController@userDetails');
     Route::post('setting', 'UserController@setDetails');
 
-    /**
-     * 粉丝与关注
-     * 
-     *   关注某个用户
-     *   取消关注某个用户
-     */
     Route::post('focus/{user}', 'UserController@doFocus');
     Route::post('unfocus/{user}', 'UserController@unFocus');
+
+    Route::get('notices', 'NoticeController@index');
 });
 
 // 文章首页、列表页

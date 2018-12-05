@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Frontend\Controllers;
 
 use App\Mariadb\Frontend\User;
 use Illuminate\Support\Facades\Auth;
