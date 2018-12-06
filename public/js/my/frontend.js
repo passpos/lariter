@@ -4,8 +4,7 @@ $.ajaxSetup({
     }
 });
 
-$(".btn-default").click(function (event) {
-    var target = $(event.target);
+$(".btn-default").click(function () {
     var query = $("input[name='query']").val();
 
     $.ajax({
@@ -14,9 +13,10 @@ $(".btn-default").click(function (event) {
         data: {
             'query': query
         },
-        dataType: 'json',
+        dataType: 'html',
         success: function (data) {
-            window.location.write(data);
+            result = document.write(data);
+            return result;
         }
     });
 });
