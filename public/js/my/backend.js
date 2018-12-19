@@ -4,6 +4,9 @@ $.ajaxSetup({
     }
 });
 
+/**
+ * 后台文章管理——文章审核
+ */
 $(".post-audit").click(function (event) {
     var target = $(event.target);
     var post_id = target.attr('post-id');
@@ -25,7 +28,9 @@ $(".post-audit").click(function (event) {
     });
 });
 
-
+/**
+ * 后台专题管理——删除专题
+ */
 $(".resource-delete").click(function (event) {
     if (confirm("确定删除这个专题？") === false) {
         return;

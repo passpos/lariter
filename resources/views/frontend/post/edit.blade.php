@@ -44,6 +44,6 @@
 <script type="text/javascript" src="/js/bootstrap-3.3.7/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/NKeditor5.0.3.2/NKeditor-all-min.js"></script>
 <script type="text/javascript" src="/js/NKeditor5.0.3.2/lang/zh-CN.js"></script>
-<script src="/js/my/frontend.js"></script>
+<script type="text/javascript" src="/js/my/search.js"></script>
 <script type="text/javascript" src="/js/my/editor.js"></script>
 @endsection

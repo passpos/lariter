@@ -29,7 +29,8 @@ class TopicController extends Controller {
         $posts = $istopic->posts()->orderBy('created_at', 'desc')->take(10)->get();
         // 我的未投稿的文章
         $myposts = Post::authorBy(Auth::id())->topicNotBy($topic_id)->get();
-        return view('frontend.topic.show', compact('istopic', 'posts', 'myposts'));
+        $title = $istopic->name;
+        return view('frontend.topic.show', compact('istopic', 'posts', 'myposts', 'title'));
     }
 
     /**

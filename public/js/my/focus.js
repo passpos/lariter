@@ -4,7 +4,9 @@ $.ajaxSetup({
     }
 });
 
-
+/**
+ * 前台粉丝关注
+ */
 $(".like-button").click(function (event) {
     var target = $(event.target);
     var status_focus = target.attr('like-value');

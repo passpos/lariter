@@ -24,6 +24,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" src="/js/jquery-3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap-3.3.7/bootstrap.min.js"></script>
-<script src="/js/my/frontend.js"></script>
-<script type="text/javascript" src="/js/my/userAction.js"></script>
+<script type="text/javascript" src="/js/my/search.js"></script>
+<script type="text/javascript" src="/js/my/focus.js"></script>
 @endsection
