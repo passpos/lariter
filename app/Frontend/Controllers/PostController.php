@@ -7,6 +7,7 @@ use App\Mariadb\Frontend\Comment;
 use App\Mariadb\Frontend\Up;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller {
 
@@ -43,7 +44,13 @@ class PostController extends Controller {
 
     //创建文章
     public function create() {
-        return view('frontend.post.create', ['title' => '创作一篇文章!']);
+        $title = '选择编辑器';
+        return view('frontend.post.create', compact('title'));
+    }
+
+    public function wangEdt() {
+        $title = '创作一篇文章!';
+        return view('frontend.post.wangedt', compact('title'));
     }
 
     /**
@@ -60,10 +67,14 @@ class PostController extends Controller {
         // 需要指明传来的某个具体参数可在括号内注明，
         // 留空表示获取所有内容
         // 验证
-        $this->validate(request(), [
+        $validator = Validator::make(request()->input(), [
             'title' => 'required|string|max:100|min:4',
             'content' => 'required|string|max:50000|min:100',
         ]);
+        if ($validator->fails()) {
+            $msg = $validator->errors();
+            return $msg;
+        }
 
         /**
          * 逻辑
@@ -99,10 +110,11 @@ class PostController extends Controller {
         $params = array_merge(request(['title', 'content']), compact('user_id'));
 
         Post::create($params);
-
-
-        // 渲染提交后的页面
-        return redirect("/posts");
+        $msg = [
+            'errCode' => 0,
+            'errMsg' => '保存成功',
+        ];
+        return $msg;
     }
 
     // 编辑文章

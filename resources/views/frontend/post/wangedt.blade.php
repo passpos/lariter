@@ -16,13 +16,20 @@
 
 @section('content')
 <div>
-  <p>使用<a href="/posts/wangedt" target="_blank">wangEditor</a></p>
-</div>
-<div>
-  <p>使用<a href="/posts/nkedt" target="_blank">NKeditor</a></p>
-</div>
-<div>
-  <p>使用<a href="/posts/kedt" target="_blank">KindEditor</a></p>
+  <div class="form-group">
+    <label>标题</label>
+    <input name="title" type="text" class="form-control" placeholder="这里是标题">
+  </div>
+
+  <div class="form-group">
+    <label>内容</label>
+    <div id="wangedt">在这里添加内容</div>
+  </div>
+
+  @include('frontend.layout.errors')
+
+  {{-- 提交按钮 --}}
+  <button  id="passage-store" type="submit" class="btn btn-default">保存</button>
 </div>
 <br/>
 @endsection
@@ -31,8 +38,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" src="/js/jquery-3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap-3.3.7/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/NKeditor5.0.3.2/NKeditor-all-min.js"></script>
-<script type="text/javascript" src="/js/NKeditor5.0.3.2/lang/zh-CN.js"></script>
+<script type="text/javascript" src="/js/wangEditor-3.1.1/wangEditor.min.js"></script>
 <script type="text/javascript" src="/js/my/search.js"></script>
-<script type="text/javascript" src="/js/my/editor.js"></script>
+<script type="text/javascript" src="/js/my/wangedt.js"></script>
 @endsection

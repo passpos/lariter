@@ -11,7 +11,6 @@
   |
  */
 
-
 /**
  * 用户模块
  * 
@@ -78,6 +77,9 @@ Route::prefix('posts')->group(function () {
     Route::get('{post}', 'PostController@passage')->where('post', '[0-9]+');
 
     Route::get('create', 'PostController@create');
+    Route::get('wangedt', 'PostController@wangEdt');
+    Route::get('nkedt', 'PostController@nkEdt');
+    Route::get('kedt', 'PostController@kEdt');
     Route::post('store', 'PostController@store');
 
     Route::get('edit/{post}', 'PostController@edit')->where('post', '[0-9]+');

@@ -14,7 +14,7 @@
         <input name="query" type="text" class="form-control" style="margin-top:10px" placeholder="搜索词"/>
       </li>
       <li>
-        <button class="btn btn-default" style="margin-top:10px" type="submit">Go!</button>
+        <button id="search" class="btn btn-default" style="margin-top:10px" type="submit">Go!</button>
       </li>
     </ul>
 
