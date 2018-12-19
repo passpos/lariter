@@ -20,7 +20,7 @@
   <blockquote>
     <p>{{ $istopic->name }}</p>
     <footer>文章：{{ $istopic->topic_posts_count }}</footer>
-    <button 
+    <button
         class="btn btn-default topic-submit"  
         data-toggle="modal" 
         data-target="#topic_submit_modal" 
