@@ -10,7 +10,8 @@ class RegisterController extends Controller {
 
     // 注册页
     public function index() {
-        return view('frontend.user.register');
+        $title = '注册';
+        return view('frontend.user.register', ['title' => $title]);
     }
 
     /**

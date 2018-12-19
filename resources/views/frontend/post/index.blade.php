@@ -1,4 +1,18 @@
-@extends('frontend.layout.index')
+@extends('frontend.layout.main')
+@section('style')
+<!-- Bootstrap core CSS -->
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<!--<link href="/css/bootstrap-4.1.3/bootstrap.min.css" rel="stylesheet">-->
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="/css/blog.css">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+@endsection
+
 @section('content')
 <div class="col-sm-8 blog-main">
   <div>
@@ -53,7 +67,7 @@
       </h2>
 
       <p class="blog-post-meta">
-        <a href="/user/homepage/{{ $post->user->id }}">{{ $post->user->name }}</a>
+        <a href="/user/detail/{{ $post->user->id }}">{{ $post->user->name }}</a>
         {{ $post->created_at->toFormattedDateString() }}
       </p>
       {!! str_limit($post->content, 0, '……') !!}
@@ -68,3 +82,16 @@
 </div>
 @endsection
 
+@section('sidebar')
+@include('frontend.layout.sidebar')
+@endsection
+
+@section('javascript')
+<!-- 
+      Bootstrap core JavaScript 
+      Placed at the end of the document so the pages load faster
+-->
+<script src="/js/jquery-3.3.1/jquery.min.js"></script>
+<script src="/js/bootstrap-3.3.7/bootstrap.min.js"></script>
+<script src="/js/my/frontend.js"></script>
+@endsection

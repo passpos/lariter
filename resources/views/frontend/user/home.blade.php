@@ -15,36 +15,15 @@
 @endsection
 
 @section('content')
-<form action="/posts/store" method="POST" style="width:800px">
-  @csrf
-
-  <div class="form-group">
-    <label>标题</label>
-    <input name="title" type="text" class="form-control" placeholder="这里是标题">
-  </div>
-
-  <div class="form-group">
-    <label>内容</label>
-    <textarea id="editor_1" name="content" style="border: solid 1px #666; width:800px; height:600px;">
-        在这里添加内容
-    </textarea>
-  </div>
-
-  @include('frontend.layout.errors')
-
-  {{-- 提交按钮 --}}
-  <button  id="passage-store" type="submit" class="btn btn-default">保存</button>
-
-</form>
-<br/>
+<div class="col-sm-8 blog-main">
+  <p>个人空间</p>
+</div>
 @endsection
 
 @section('javascript')
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" src="/js/jquery-3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap-3.3.7/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/NKeditor5.0.3.2/NKeditor-all-min.js"></script>
-<script type="text/javascript" src="/js/NKeditor5.0.3.2/lang/zh-CN.js"></script>
 <script src="/js/my/frontend.js"></script>
-<script type="text/javascript" src="/js/my/editor.js"></script>
+<script type="text/javascript" src="/js/my/userAction.js"></script>
 @endsection

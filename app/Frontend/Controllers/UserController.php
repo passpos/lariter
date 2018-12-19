@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {
 
-    // 个人主页、个人中心、用于公开查看的用户主页
-    public function userHomepage(User $user) {
+    // 用于公开查看的用户主页
+    public function userDetails(User $user) {
         /**
          * 需要传递的信息：用户名、头像、创作的文章数、关注数、粉丝数
          * 
@@ -19,7 +19,7 @@ class UserController extends Controller {
          *  withCount()只能在Query Builder（查询构建器）中使用,如在where、orderBy、find等语句之后调用。
          * find()查询与条件匹配的记录
          */
-        $homepageUser = User::withCount(['posts', 'fans', 'stars'])->find($user->id);
+        $detailUser = User::withCount(['posts', 'fans', 'stars'])->find($user->id);
 
         /**
          * 创作的文章的列表，取出前十条
@@ -51,8 +51,8 @@ class UserController extends Controller {
         $fanUsers = User::whereIn('id', $fans->pluck('fan_id'))
                 ->withCount(['posts', 'fans', 'stars'])
                 ->get();
-
-        return view('frontend.user.homepage', compact('homepageUser', 'posts', 'fanUsers', 'starUsers'));
+        $title = $user->name . '的主页';
+        return view('frontend.user.userdetail', compact('detailUser', 'posts', 'fanUsers', 'starUsers', 'title'));
     }
 
     // 关注某个用户
@@ -78,13 +78,33 @@ class UserController extends Controller {
     }
 
     // 个人空间
-    public function userField() {
-        return view('frontend.user.field');
+    public function userHome(User $user) {
+        if ($user->id == Auth::id()) {
+            $title = '我的空间';
+            return view('frontend.user.home', compact('title'));
+        } else {
+            return redirect('/');
+        }
     }
 
     // 个人设置页
-    public function userDetails() {
-        return view('frontend.user.details');
+    public function setting(User $user) {
+        if ($user->id == Auth::id()) {
+            $title = '设置用户信息';
+            return view('frontend.user.setting', compact('user', 'title'));
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function storeSetting(User $user) {
+        if ($user->id == Auth::id()) {
+            User::find(Auth::id());
+            $title = '设置用户信息';
+            return view('frontend.user.setting', compact('user', 'title'));
+        } else {
+            return redirect('/');
+        }
     }
 
 }

@@ -30,14 +30,14 @@ class NoticeController extends Controller {
             'title' => '增加通知'
         ]);
     }
-    
+
     public function store() {
         $this->validate(request(), [
             'title' => 'required|string',
             'content' => 'required|string',
         ]);
         $notice = Notice::create(request(['title', 'content']));
-        dispatch(new SendMessage($notice));
+        SendMessage::dispatch($notice);
         return redirect('/backend/notices');
     }
 

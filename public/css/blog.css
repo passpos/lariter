@@ -16,7 +16,6 @@ h6, .h6 {
     margin-top: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
-    color: #333;
 }
 
 
@@ -125,32 +124,6 @@ h6, .h6 {
     margin-bottom: 0;
 }
 
-div#sidebar {
-    border-radius: 3px !important;
-    padding: 10px 5px !important;
-}
-
-aside.widget
-{
-    border-color: #333 !important;
-    background-color: #444 !important;
-}
-
-div.panel-heading {
-    border-radius: 3px !important;
-    border-color: #333 !important;
-    color: #ccc !important;
-    background-color: #333 !important;
-}
-
-div.panel-body,
-ul.list-group li
-{
-    border-color: #333 !important;
-    background-color: #4a4a4a !important;
-}
-
-
 /**
  *  Editor Style
  *
@@ -197,10 +170,6 @@ ul.list-group li
 p {
     word-wrap: break-word;
     word-break: normal;
-}
-
-.panel {
-    border-color: #333 !important;
 }
 
 .form-control,
