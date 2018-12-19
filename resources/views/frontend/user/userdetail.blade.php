@@ -1,12 +1,26 @@
-@extends('frontend.layout.user')
-@section('content')
+@extends('frontend.layout.main')
 
+@section('style')
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="/css/bootstrap-3.3.7/bootstrap.min.css">
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="/css/blog.css">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+
+<![endif]-->
+@endsection
+
+@section('content')
 <div class="col-sm-8">
   {{-- 用户概况 --}}
   <blockquote>
-    <p><img src="{{ $homepageUser->avatar }}" alt="" class="img-rounded" style="border-radius:500px; height: 40px">{{ $homepageUser->name }}</p>
-    <footer>关注：{{ $homepageUser->stars_count }}｜粉丝：{{ $homepageUser->fans_count }}｜文章：{{ $homepageUser->posts_count }}</footer>
-    @include('frontend.user.components.focus',['target_user' => $homepageUser])
+    <p><img src="{{ $detailUser->avatar }}" alt="" class="img-rounded" style="border-radius:500px; height: 40px">{{ $detailUser->name }}</p>
+    <footer>关注：{{ $detailUser->stars_count }}｜粉丝：{{ $detailUser->fans_count }}｜文章：{{ $detailUser->posts_count }}</footer>
+    @include('frontend.user.components.focus',['target_user' => $detailUser])
   </blockquote>
 </div>
 
@@ -24,7 +38,7 @@
       <div class="tab-pane active" id="tab_1">
         @foreach($posts as $post)
         <div class="blog-post" style="margin-top: 30px">
-          <p class=""><a href="/user/homepage/{{ $post->user->id }}">{{ $post->user->name }}</a> {{ $post->created_at->diffForHumans() }}</p>
+          <p class=""><a href="/user/detail/{{ $post->user->id }}">{{ $post->user->name }}</a> {{ $post->created_at->diffForHumans() }}</p>
           <p class=""><a href="/posts/{{ $post->id }}" >{{ $post->title }}</a></p>
           <p>{!! str_limit($post->content, 0, '……') !!}</p>
         </div>
@@ -37,7 +51,7 @@
         <div class="blog-post" style="margin-top: 30px">
           <p class="">{{ $star->name }}</p>
           <p class="">关注：{{ $star->stars_count }} | 粉丝：{{ $star->fans_count }}｜ 文章：{{ $star->posts_count }}</p>
-          @include('user.components.focus',['target_user' => $star])
+          @include('frontend.user.components.focus',['target_user' => $star])
         </div>
         @endforeach
       </div>
@@ -48,13 +62,25 @@
         <div class="blog-post" style="margin-top: 30px">
           <p class="">{{ $fan->name }}</p>
           <p class="">关注：{{ $fan->stars_count }} | 粉丝：{{ $fan->fans_count }}｜ 文章：{{ $fan->posts_count }}</p>
-          @include('user.components.focus',['target_user' => $fan])
+          @include('frontend.user.components.focus',['target_user' => $fan])
         </div>
         @endforeach
       </div>
-
     </div>
 
   </div>
+
 </div>
+@endsection
+
+@section('sidebar')
+@include('frontend.layout.sidebar')
+@endsection
+
+@section('javascript')
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="/js/jquery-3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-3.3.7/bootstrap.min.js"></script>
+<script src="/js/my/frontend.js"></script>
+<script type="text/javascript" src="/js/my/userAction.js"></script>
 @endsection

@@ -11,6 +11,7 @@ class NoticeController extends Controller {
         $title = '通知';
         $user = Auth::user();
         $notices = $user->notices;
+        
         return view('frontend.notice.index', compact('notices', 'title'));
     }
 

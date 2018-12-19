@@ -101,12 +101,13 @@ class User extends Authenticatable {
      */
     public function notices() {
         return $this->belongsToMany('App\Mariadb\BackendFrontend\Notice', 'bf_notice_user', 'user_id', 'notice_id')
-                        ->withTimestamps()
-                        ->withPivot(['user_id', 'notice_id']);
+                        ->withPivot(['user_id', 'notice_id'])
+                        ->withTimestamps();
     }
 
     /**
-     * 给用户增加通知
+     * 给用户增加通知；
+     * 在后台创建通知后，后台启动队列任务；
      */
     public function addNotice($notice) {
         return $this->notices()->save($notice);

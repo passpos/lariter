@@ -4,6 +4,9 @@ $.ajaxSetup({
     }
 });
 
+/**
+ * 搜索功能脚本
+ */
 $(".btn-default").click(function () {
     var query = $("input[name='query']").val();
 

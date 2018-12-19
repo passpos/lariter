@@ -18,7 +18,11 @@ class PostController extends Controller {
         $posts = Post::orderBy('created_at', 'desc')
                 ->withCount(['comments', 'ups'])
                 ->paginate(5);
-        return view('frontend.post.index', ['posts' => $posts]);
+        $title = 'Blog - Laravel';
+        return view('frontend.post.index', [
+            'posts' => $posts,
+            'title' => $title
+        ]);
     }
 
     //文章详情

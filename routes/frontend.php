@@ -40,13 +40,13 @@ Route::prefix('user')->group(function () {
     Route::post('login', 'LoginController@login');
     Route::get('logout', 'LoginController@logout');
 
-    Route::get('homepage/{user}', 'UserController@userHomepage');
-    Route::get('field/{user}', 'UserController@userField');
-    Route::get('setting', 'UserController@userDetails');
-    Route::post('setting', 'UserController@setDetails');
+    Route::get('detail/{user}', 'UserController@userDetails')->where('user', '[0-9]+');
+    Route::get('home/{user}', 'UserController@userHome')->where('user', '[0-9]+');
+    Route::get('setting/{user}', 'UserController@setting')->where('user', '[0-9]+');
+    Route::post('setting/{user}', 'UserController@storeSetting')->where('user', '[0-9]+');
 
-    Route::post('focus/{user}', 'UserController@doFocus');
-    Route::post('unfocus/{user}', 'UserController@unFocus');
+    Route::post('focus/{user}', 'UserController@doFocus')->where('user', '[0-9]+');
+    Route::post('unfocus/{user}', 'UserController@unFocus')->where('user', '[0-9]+');
 
     Route::get('notices', 'NoticeController@index');
 });

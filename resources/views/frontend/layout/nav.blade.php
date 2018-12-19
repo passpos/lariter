@@ -28,8 +28,8 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="/user/homepage/{{ Auth::id() }}">我的主页</a></li>
-            <li><a href="/user/field/{{ Auth::id() }}">我的空间</a></li>
+            <li><a href="/user/detail/{{ Auth::id() }}">我的主页</a></li>
+            <li><a href="/user/home/{{ Auth::id() }}">我的空间</a></li>
             <li><a href="/user/setting/{{ Auth::id() }}">个人设置</a></li>
             <li><a href="/user/logout">登出</a></li>
           </ul>

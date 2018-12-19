@@ -1,4 +1,4 @@
-@extends('frontend.layout.index')
+@extends('frontend.layout.main')
 @section('content')
 <div class="alert alert-success" role="alert">
   搜索“{{ $query }}”，共找到{{ $posts->total() }}篇文章。
@@ -8,7 +8,7 @@
   @foreach($posts as $post)
   <div class="blog-post">
     <h2 class="blog-post-title"><a href="/posts/{{ $post->id }}" >{{ $post->title }}</a></h2>
-    <p class="blog-post-meta">{{ $post->created_at }} 由 <a href="/user/homepage/{{ $post->user->id }}">{{ $post->user->name }}</a> 写作</p>
+    <p class="blog-post-meta">{{ $post->created_at }} 由 <a href="/user/detail/{{ $post->user->id }}">{{ $post->user->name }}</a> 写作</p>
     <p>{!! str_limit($post->content, 0, '……') !!}</p>
   </div>
   @endforeach
