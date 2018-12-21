@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller {
 
-    // 文章列表
     public function index() {
         /**
          * 评论数统计与渲染
@@ -26,7 +25,7 @@ class PostController extends Controller {
         ]);
     }
 
-    //文章详情
+    // 文章详情
     public function passage(Post $post) {
         // 提前在控制器中加载评论数据；
         // 此处加载后，模板渲染的评论数据就是这里的，不会再次加载。
@@ -42,25 +41,19 @@ class PostController extends Controller {
         ]);
     }
 
-    //创建文章
-    public function create() {
-        $title = '选择编辑器';
-        return view('frontend.post.create', compact('title'));
-    }
-
-    public function wangEdt() {
-        $title = '创作一篇文章!';
-        return view('frontend.post.wangedt', compact('title'));
-    }
-
     /**
-     * 存储文章
+     * 创建、存储文章
      * 
      * 表单提交三步骤：
      * ①验证
      * ②逻辑（传递数据到数据表模型的方法）
      * ③渲染
      */
+    public function create() {
+        $title = '选择编辑器';
+        return view('frontend.post.create', compact('title'));
+    }
+
     public function store() {
         // 从请求中获取所有数据的方法：Request::all()，
         // 或下面的request()方法，这是由Request门面对象提供的
@@ -68,8 +61,8 @@ class PostController extends Controller {
         // 留空表示获取所有内容
         // 验证
         $validator = Validator::make(request()->input(), [
-            'title' => 'required|string|max:100|min:4',
-            'content' => 'required|string|max:50000|min:100',
+                    'title' => 'required|string|max:100|min:4',
+                    'content' => 'required|string|max:50000|min:100',
         ]);
         if ($validator->fails()) {
             $msg = $validator->errors();
@@ -117,12 +110,19 @@ class PostController extends Controller {
         return $msg;
     }
 
-    // 编辑文章
+    /**
+     * 生成、加载富文本编辑器
+     */
+    public function wangEdt() {
+        $title = '创作一篇文章!';
+        return view('frontend.post.wangedt', compact('title'));
+    }
+
+    // 编辑、更新文章
     public function edit(Post $post) {
         return view('frontend.post.edit', compact('post'), ['title' => $post->title]);
     }
 
-    // 更新文章
     public function update(Post $post) {
         // 验证
         $this->validate(request(), [
@@ -195,7 +195,7 @@ class PostController extends Controller {
         return back();
     }
 
-    // 点赞
+    // 点赞、取消点赞
     public function up(Post $post) {
         /**
          * 对文章的点赞行为
@@ -209,7 +209,6 @@ class PostController extends Controller {
         return back();
     }
 
-    // 取消点赞
     public function unup(Post $post) {
         $post->up(Auth::id())->delete();
         return back();
