@@ -28,10 +28,7 @@ Route::prefix('backend')->group(function () {
      * 
      */
     Route::group(['middleware' => 'auth:backend'], function() {
-        /**
-         * 后台首页
-         */
-        Route::get('', 'PanelController@index');
+
         Route::get('index', 'PanelController@index');
 
         /**
