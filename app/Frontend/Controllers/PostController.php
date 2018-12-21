@@ -118,6 +118,18 @@ class PostController extends Controller {
         return view('frontend.post.wangedt', compact('title'));
     }
 
+    public function kindEdt() {
+        
+    }
+
+    public function nkEdt() {
+        
+    }
+
+    public function nEdt() {
+        
+    }
+
     // 编辑、更新文章
     public function edit(Post $post) {
         return view('frontend.post.edit', compact('post'), ['title' => $post->title]);
