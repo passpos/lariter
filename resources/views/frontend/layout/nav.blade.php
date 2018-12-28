@@ -39,6 +39,7 @@
       <a class="blog-nav-item" href="/user/register">注册</a>
       <a class="blog-nav-item" href="/user/login">登录</a>
       @endif
+      <a href="/backend" class="blog-nav-item">登录后台</a>
     </ul>
   </div>
 </div>
