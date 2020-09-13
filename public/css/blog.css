@@ -4,7 +4,8 @@
 
 body {
     font-family: Georgia, "Times New Roman", Times, serif;
-    color: #555;
+    background-color: #444 !important;
+    color: #eee;
 }
 
 h1, .h1,
@@ -18,22 +19,124 @@ h6, .h6 {
     font-weight: normal;
 }
 
+p {
+    word-wrap: break-word;
+    word-break: normal;
+    color: #ccc !important;
+}
+p.* {
+    color: #aaa !important;
+}
 
-/*
- * Override Bootstrap's default container.
- */
+body > b{
+    display: block !important;
+    color: #b33;
+    clear: right !important;
+}
+input,button{
+    background-color: #444 !important;
+    color: #ccc !important;
+    border-color: #222 !important;
+    border-radius: 2px !important;
+}
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    margin: 0px !important;
+    padding: 5px 0px 5px 3px !important;
+    border-radius: 3px !important;
+    color: #ccc !important;
+    background-color: #292929 !important;
+}
+
+pre {
+    background-color: #252525 !important;
+    border-color: #222 !important;
+    margin: 3px 5px;
+}
+
+/************************************************** 未知内容 **************************************************/
+.punctuation {
+    clear: right;
+    display: block;
+}
+
+div.details-container {
+    background-color: #ddd !important;
+}
+div.frame-code-container {
+    background-color: #353535 !important;
+}
+div.details {
+    background-color: #ccc !important;
+}
+
+pre.code-block {
+    background-color: #353535 !important;
+}
+pre.language-php {
+    color: #ccc !important;
+}
+
+ol.linenums {
+    background-color: #444 !important;
+}
+li.active {
+    background-color: #844 !important;
+}
+li.current {
+    background-color: #855 !important;
+}
+
+
+/************************************************** 内容条目 **************************************************/
+.blog-post {
+    border-radius: 3px !important;
+    color: #ccc !important;
+    background-color: #333 !important;
+}
+.blog-post p{
+    padding: 5px;
+}
+
+/************************************************** 侧边内容 **************************************************/
+div#sidebar {
+    border-radius: 3px !important;
+    padding: 10px 5px !important;
+}
+aside.widget {
+    border-color: #333 !important;
+    background-color: #444 !important;
+}
+div.panel-heading {
+    border-radius: 3px !important;
+    border-color: #333 !important;
+    color: #ccc !important;
+    background-color: #333 !important;
+}
+div.panel-body,
+li.list-group-item {
+    border-color: #333 !important;
+    background-color: #4a4a4a !important;
+}
+
+.panel {
+    border-color: #333 !important;
+}
+
+
+/** Override Bootstrap's default container. */
 @media (min-width: 1200px) {
     .container {
         width: 970px;
     }
 }
 
-
-/*
- * Masthead for nav
- */
-
+/** Masthead for nav */
 .blog-masthead {
     background-color: #428bca;
     -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
@@ -73,10 +176,7 @@ h6, .h6 {
 }
 
 
-/*
- * Blog name and description
- */
-
+/** Blog name and description */
 .blog-header {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -93,10 +193,7 @@ h6, .h6 {
 }
 
 
-/*
- * Main column and sidebar layout
- */
-
+/** Main column and sidebar layout */
 .blog-main {
     font-size: 18px;
     line-height: 1.5;
@@ -106,9 +203,7 @@ h6, .h6 {
     width: 850px;
 }
 
-/**
- * Sidebar modules for boxing content
- */
+/** Sidebar modules for boxing content */
 .sidebar-module {
     padding: 15px;
     margin: 0 -15px 15px;
@@ -124,10 +219,7 @@ h6, .h6 {
     margin-bottom: 0;
 }
 
-/**
- *  Editor Style
- *
- */
+/***  Editor Style **/
 #editor-menu {
     width: 750px
 }
@@ -149,11 +241,7 @@ h6, .h6 {
     border-radius: 30px;
 }
 
-
-/*
- * Blog posts
- */
-
+/** Blog posts */
 .blog-post {
     border-radius: 3px;
     margin-bottom: 20px;
@@ -167,11 +255,6 @@ h6, .h6 {
     color: #999;
 }
 
-p {
-    word-wrap: break-word;
-    word-break: normal;
-}
-
 .form-control,
 .btn-default{
     color: #ccc;
@@ -179,10 +262,7 @@ p {
     background-color: #444 !important;
 }
 
-/*
- * Footer
- */
-
+/** Footer **/
 .blog-footer {
     padding: 40px 0;
     color: #999;
