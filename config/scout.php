@@ -83,7 +83,7 @@ return [
     ],
     
     'elasticsearch' => [
-        'index' => env('ELASTICSEARCH_INDEX', 'laravel'),
+        'index' => env('ELASTICSEARCH_INDEX', 'lariter'),
         'hosts' => [
             env('ELASTICSEARCH_HOST', 'http://localhost:9602'),
         ],
