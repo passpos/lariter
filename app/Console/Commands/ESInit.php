@@ -55,7 +55,7 @@ class ESInit extends Command {
          * - 
          */
         $url1 = config('scout.elasticsearch.hosts')[0] . '/_template/tmp';
-        // $client->delete($url1);
+        $client->delete($url1);
 
         /**
          * 模版参数
@@ -64,7 +64,7 @@ class ESInit extends Command {
          * - mappings 映射
          *      - _default_ 默认设置
          * 
-         * 注意：下面的是json格式数据，用于发送到Elasticsearch，不要使用双斜杠注释；
+         * 注意：下面的是json格式数据，用于发送到Elasticsearch；
          */
         $param1 = [
             'json' => [
