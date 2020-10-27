@@ -44,7 +44,7 @@ class ESInit extends Command {
          * - 通过向es引擎发送（rest风格的）http请求，创建template；
          * - 要（从服务端）发送http请求，就需要guzzlehttp库；
          */
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
 
         /**
          * 获取ES的配置信息
@@ -55,7 +55,7 @@ class ESInit extends Command {
          * - 
          */
         $url1 = config('scout.elasticsearch.hosts')[0] . '/_template/tmp';
-        // $client->delete($url1);
+        $client->delete($url1);
 
         /**
          * 模版参数
@@ -76,7 +76,7 @@ class ESInit extends Command {
                                 'strings' => [
                                     'match_mapping_type' => 'string',
                                     'mapping'            => [
-//                                        'type'     => 'text',
+                                        'type'     => 'text',
                                         'analyzer' => 'ik_smart',
                                         'fields'   => [
                                             'keyword' => [
@@ -100,7 +100,7 @@ class ESInit extends Command {
          * index/索引，一般对一张数据表建立一个索引
          */
         $url2 = config('scout.elasticsearch.hosts')[0] . '/' . config('scout.elasticsearch.index');
-        // $client->delete($url2);
+        $client->delete($url2);
         $param2 = [
             'json' => [
                 'settings' => [
