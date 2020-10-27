@@ -10,6 +10,15 @@ use App\Mariadb\Frontend\Topic;
 class AppServiceProvider extends ServiceProvider {
 
     /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register() {
+        //
+    }
+
+    /**
      * Bootstrap any application services.
      *
      * @return void
@@ -20,15 +29,6 @@ class AppServiceProvider extends ServiceProvider {
             $topics = Topic::all();
             $view->with('topics', $topics);
         });
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register() {
-        //
     }
 
 }

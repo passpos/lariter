@@ -2,19 +2,17 @@
 
 namespace App\Exceptions;
 
-use Exception;
-use Throwable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
-class Handler extends ExceptionHandler
-{
+class Handler extends ExceptionHandler {
+
     /**
      * A list of the exception types that are not reported.
      *
      * @var array
      */
     protected $dontReport = [
-        //
+            //
     ];
 
     /**
@@ -28,23 +26,12 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * Report or log an exception.
+     * Register the exception handling callbacks for the application.
      *
-     * @param  \Exception  $exception
      * @return void
      */
-    public function report(Throwable $exception) {
-        parent::report($exception);
+    public function register() {
+        //
     }
 
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
-     */
-    public function render($request, Throwable $exception) {
-        return parent::render($request, $exception);
-    }
 }
