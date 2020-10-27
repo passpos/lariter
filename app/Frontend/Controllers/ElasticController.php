@@ -22,7 +22,7 @@ class ElasticController extends Controller {
      */
     public function init() {
         $title = '初始化Elastacsearch模版配置';
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
 
         /**
          * 获取ES的配置信息
@@ -70,11 +70,7 @@ class ElasticController extends Controller {
             ]
         ];
 
-        try {
-            $resp = $client->put($url1, $param1);
-        } catch (Exception $ex) {
-            var_dump($ex->getResponse()->getBody()->getContents());
-        }
+        $resp = $client->put($url1, $param1);
         $body = $resp->getBody()->getContents();
 
         return view('frontend.elastic.base', [
@@ -90,7 +86,7 @@ class ElasticController extends Controller {
      */
     public function index() {
         $title = '初始化Elastacsearch索引配置';
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
 
         $url2 = config('scout.elasticsearch.hosts')[0] . '/' . config('scout.elasticsearch.index');
         // $client->delete($url2);
