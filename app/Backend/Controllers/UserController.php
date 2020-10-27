@@ -71,11 +71,4 @@ class UserController extends Controller {
         return back();
     }
 
-    public function role() {
-        return view('backend.user.role',['title' => '用户角色管理']);
-    }
-    
-    public function storeRole() {
-        
-    }
 }
