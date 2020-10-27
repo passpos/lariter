@@ -60,24 +60,25 @@ class ESInit extends Command {
         /**
          * 模版参数
          * 
-         * 注意下面的是json格式数据，用于发送到Elasticsearch，不要使用双斜杠注释；
+         * - template 该模版的作用范围（索引范围）；
+         * - mappings 映射
+         *      - _default_ 默认设置
+         * 
+         * 注意：下面的是json格式数据，用于发送到Elasticsearch，不要使用双斜杠注释；
          */
         $param1 = [
             'json' => [
-                /* 该模版的作用范围（索引范围）； */
                 'template' => config('scout.elasticsearch.index'),
-                /* 映射 */
                 'mappings' => [
-                    /* 默认设置 */
                     '_default_' => [
                         'dynamic_templates' => [
                             [
                                 'strings' => [
                                     'match_mapping_type' => 'string',
-                                    'mapping' => [
-                                        'type' => 'text',
+                                    'mapping'            => [
+                                        'type'     => 'text',
                                         'analyzer' => 'ik_smart',
-                                        'fields' => [
+                                        'fields'   => [
                                             'keyword' => [
                                                 'type' => 'keyword'
                                             ]
@@ -103,8 +104,8 @@ class ESInit extends Command {
         $param2 = [
             'json' => [
                 'settings' => [
-                    'refresh_interval' => '5s',
-                    'number_of_shards' => 1,
+                    'refresh_interval'   => '5s',
+                    'number_of_shards'   => 1,
                     'number_of_replicas' => 0,
                 ],
                 'mappings' => [
