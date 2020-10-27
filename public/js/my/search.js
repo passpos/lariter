@@ -9,7 +9,6 @@ $.ajaxSetup({
  */
 $('#search').click(function () {
     var query = $("input[name='query']").val();
-
     $.ajax({
         url: '/posts/search',
         method: 'POST',
