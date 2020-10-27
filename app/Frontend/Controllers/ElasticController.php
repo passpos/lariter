@@ -1,49 +1,27 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Frontend\Controllers;
 
-use Illuminate\Console\Command;
+use App\Mariadb\Frontend\Post;
+use App\Mariadb\Frontend\Comment;
+use App\Mariadb\Frontend\Up;
 use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
-class ESInit extends Command {
-
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'es:init';
+class ElasticController extends Controller {
 
     /**
-     * The console command description.
-     *
-     * @var string
+     * 1. 创建template
+     * template模版，指对某个类型的字段使用的搜索模式的配置细节。
+     * 这里指用户搜索关键字后，Elasticsearch的应对策略，该细节由Scout告知ES；
+     * 
+     * - 通过向es引擎发送（rest风格的）http请求，创建template；
+     * - 要（从服务端）发送http请求，就需要guzzlehttp库；
      */
-    protected $description = 'Init laravel for post';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct() {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle() {
-        /**
-         * 1. 创建template
-         * template模版，指对某个类型的字段使用的搜索模式的配置细节。
-         * 这里指用户搜索关键字后，Elasticsearch的应对策略，该细节由Scout告知ES；
-         * 
-         * - 通过向es引擎发送（rest风格的）http请求，创建template；
-         * - 要（从服务端）发送http请求，就需要guzzlehttp库；
-         */
+    public function init() {
+        $title = '初始化Elastacsearch模版配置';
         $client = new Client();
 
         /**
@@ -91,14 +69,25 @@ class ESInit extends Command {
                 ],
             ]
         ];
-        $client->put($url1, $param1);
-        $this->info("======== 创建模板成功 =======");
 
-        /**
-         * 2. 创建index
-         * 
-         * index/索引，一般对一张数据表建立一个索引
-         */
+        $resp = $client->put($url1, $param1);
+        $body = $resp->getBody();
+
+        return view('frontend.elastic.base', [
+            'title' => $title,
+            'body'  => $body,
+        ]);
+    }
+
+    /**
+     * 2. 创建index
+     * 
+     * index/索引，一般对一张数据表建立一个索引
+     */
+    public function index() {
+        $title = '初始化Elastacsearch索引配置';
+        $client = new Client();
+
         $url2 = config('scout.elasticsearch.hosts')[0] . '/' . config('scout.elasticsearch.index');
         // $client->delete($url2);
         $param2 = [
@@ -117,8 +106,14 @@ class ESInit extends Command {
                 ]
             ]
         ];
-        $client->put($url2, $param2);
-        $this->info("======== 创建索引成功 =======");
+
+        $resp = $client->put($url2, $param2);
+        $body = $resp->getBody();
+
+        return view('frontend.elastic.base', [
+            'title' => $title,
+            'body'  => $body,
+        ]);
     }
 
 }

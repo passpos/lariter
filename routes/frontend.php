@@ -107,3 +107,11 @@ Route::prefix('topic')->group(function () {
     Route::get('{topic_id}', 'TopicController@show');
     Route::post('publish/{topic_id}', 'TopicController@publish');
 });
+
+/**
+ * Elasticsearch调试
+ */
+Route::prefix('elastic')->group(function () {
+    Route::get('init', 'ElasticController@init');
+    Route::get('index', 'ElasticController@index');
+});
