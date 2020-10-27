@@ -53,8 +53,8 @@ class ESInit extends Command {
          * - 其中的 hosts 允许配置多个host，这里只有一个，通过数组索引[0]访问；
          * - 
          */
-        $url = config('scout.elasticsearch.hosts')[0] . '/_template/tmp';
-        // $client->delete($url);
+        $url1 = config('scout.elasticsearch.hosts')[0] . '/_template/tmp';
+        // $client->delete($url1);
 
         /**
          * 模版参数
@@ -87,7 +87,7 @@ class ESInit extends Command {
                 ],
             ]
         ];
-        $client->put($url, $param1);
+        $client->put($url1, $param1);
         $this->info("======== 创建模板成功 =======");
 
         /**
@@ -95,8 +95,8 @@ class ESInit extends Command {
          * 
          * index/索引，一般对一张数据表建立一个索引
          */
-        $url = config('scout.elasticsearch.hosts')[0] . '/' . config('scout.elasticsearch.index');
-        // $client->delete($url);
+        $url2 = config('scout.elasticsearch.hosts')[0] . '/' . config('scout.elasticsearch.index');
+        // $client->delete($url2);
         $param2 = [
             'json' => [
                 'settings' => [
@@ -113,7 +113,7 @@ class ESInit extends Command {
                 ]
             ]
         ];
-        $client->put($url, $param2);
+        $client->put($url2, $param2);
         $this->info("======== 创建索引成功 =======");
     }
 
