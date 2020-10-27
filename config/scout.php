@@ -85,7 +85,7 @@ return [
     'elasticsearch' => [
         'index' => env('ELASTICSEARCH_INDEX', 'laravel'),
         'hosts' => [
-            env('ELASTICSEARCH_HOST', 'http://localhost:9200'),
+            env('ELASTICSEARCH_HOST', 'http://localhost:9602'),
         ],
     ],
 ];
