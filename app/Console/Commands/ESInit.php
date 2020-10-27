@@ -38,19 +38,34 @@ class ESInit extends Command {
     public function handle() {
         /**
          * 1. 创建template
-         * 通过向es引擎发送http请求， 创建template
-         * 
          * template模版，指对某个类型的字段使用的搜索模式的配置细节。
+         * 
+         * - 通过向es引擎发送（rest风格的）http请求，创建template；
+         * - 要（从服务端）发送http请求，就需要guzzlehttp库；
          */
         $client = new Client();
 
+        /**
+         * 获取ES的配置信息
+         * 
+         * - 我们在Scout中配置了Elasticsearch的网络参数；
+         * - 该配置（scout.php）是一个数组，通过数组节点进行访问；
+         * - 其中的 hosts 允许配置多个host，这里只有一个，通过数组索引[0]访问；
+         * - 
+         */
         $url = config('scout.elasticsearch.hosts')[0] . '/_template/tmp';
         // $client->delete($url);
 
+        /**
+         * 模版参数
+         */
         $param1 = [
             'json' => [
+                // 该模版的作用范围（索引范围）； 
                 'template' => config('scout.elasticsearch.index'),
+                // 映射
                 'mappings' => [
+                    // 默认设置
                     '_default_' => [
                         'dynamic_templates' => [
                             [
