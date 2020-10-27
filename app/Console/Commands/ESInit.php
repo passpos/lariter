@@ -96,7 +96,7 @@ class ESInit extends Command {
          * index/索引，一般对一张数据表建立一个索引
          */
         $url = config('scout.elasticsearch.hosts')[0] . '/' . config('scout.elasticsearch.index');
-//        $client->delete($url);
+        // $client->delete($url);
         $param2 = [
             'json' => [
                 'settings' => [
