@@ -4,6 +4,7 @@
 /.idea
 /.vscode
 /.vagrant
+/nbproject/
 /nbproject/private/
 Homestead.json
 Homestead.yaml
