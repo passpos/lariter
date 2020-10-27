@@ -37,6 +37,7 @@ class ESInit extends Command {
      */
     public function handle() {
         /**
+         * 1. 创建template
          * 通过向es引擎发送http请求， 创建template
          * 
          * template模版，指对某个类型的字段使用的搜索模式的配置细节。
@@ -44,7 +45,7 @@ class ESInit extends Command {
         $client = new Client();
 
         $url = config('scout.elasticsearch.hosts')[0] . '/_template/tmp';
-//        $client->delete($url);
+        // $client->delete($url);
 
         $param1 = [
             'json' => [
@@ -75,7 +76,7 @@ class ESInit extends Command {
         $this->info("======== 创建模板成功 =======");
 
         /**
-         * 创建index
+         * 2. 创建index
          * 
          * index/索引，一般对一张数据表建立一个索引
          */
