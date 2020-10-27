@@ -34,8 +34,8 @@ class PostController extends Controller {
         $author = $post->user->name;
         $postid = $post->id;
         return view('frontend.post.passage', [
-            'post' => $post,
-            'title' => $title,
+            'post'   => $post,
+            'title'  => $title,
             'author' => $author,
             'postid' => $postid
         ]);
@@ -61,7 +61,7 @@ class PostController extends Controller {
         // 留空表示获取所有内容
         // 验证
         $validator = Validator::make(request()->input(), [
-                    'title' => 'required|string|max:100|min:4',
+                    'title'   => 'required|string|max:100|min:4',
                     'content' => 'required|string|max:50000|min:100',
         ]);
         if ($validator->fails()) {
@@ -105,7 +105,7 @@ class PostController extends Controller {
         Post::create($params);
         $msg = [
             'errCode' => 0,
-            'errMsg' => '保存成功',
+            'errMsg'  => '保存成功',
         ];
         return $msg;
     }
@@ -138,7 +138,7 @@ class PostController extends Controller {
     public function update(Post $post) {
         // 验证
         $this->validate(request(), [
-            'title' => 'required|string|max:100|min:4',
+            'title'   => 'required|string|max:100|min:4',
             'content' => 'required|string|max:15000|min:100',
         ]);
         $this->authorize('update', $post);
@@ -163,7 +163,7 @@ class PostController extends Controller {
 
             $store_result = $photo->store('usrimg');
             $output = [
-                'extension' => $extension,
+                'extension'    => $extension,
                 'store_result' => $store_result
             ];
             print_r($output);
