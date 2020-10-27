@@ -54,7 +54,7 @@ class ElasticController extends Controller {
                                 'strings' => [
                                     'match_mapping_type' => 'string',
                                     'mapping'            => [
-//                                        'type'     => 'text',
+                                        'type'     => 'text',
                                         'analyzer' => 'ik_smart',
                                         'fields'   => [
                                             'keyword' => [
@@ -70,8 +70,12 @@ class ElasticController extends Controller {
             ]
         ];
 
-        $resp = $client->put($url1, $param1);
-        $body = $resp->getBody();
+        try {
+            $resp = $client->put($url1, $param1);
+        } catch (Exception $ex) {
+            var_dump($ex->getResponse()->getBody()->getContents());
+        }
+        $body = $resp->getBody()->getContents();
 
         return view('frontend.elastic.base', [
             'title' => $title,
