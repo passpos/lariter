@@ -94,7 +94,7 @@ Route::prefix('posts')->group(function () {
     Route::get('up/{post}', 'PostController@up');
     Route::get('unup/{post}', 'PostController@unup');
 
-    Route::post('search', 'PostController@search');
+    Route::get('search', 'PostController@search');
 });
 
 /**
