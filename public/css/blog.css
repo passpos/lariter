@@ -24,9 +24,6 @@ p {
     word-break: normal;
     color: #ccc !important;
 }
-p.* {
-    color: #aaa !important;
-}
 
 body > b{
     display: block !important;
