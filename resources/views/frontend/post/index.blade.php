@@ -70,7 +70,7 @@
         <a href="/user/detail/{{ $post->user->id }}">{{ $post->user->name }}</a>
         {{ $post->created_at->toFormattedDateString() }}
       </p>
-      {!! str_limit($post->content, 0, '……') !!}
+      {{ Str::limit($post->content, 100, '……') }}
       @include('frontend.post.components.postcount')
     </div>
     @endforeach
