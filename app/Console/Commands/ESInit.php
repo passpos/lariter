@@ -39,6 +39,7 @@ class ESInit extends Command {
         /**
          * 1. 创建template
          * template模版，指对某个类型的字段使用的搜索模式的配置细节。
+         * 这里指用户搜索关键字后，Elasticsearch的应对策略，该细节由Scout告知ES；
          * 
          * - 通过向es引擎发送（rest风格的）http请求，创建template；
          * - 要（从服务端）发送http请求，就需要guzzlehttp库；
@@ -58,14 +59,16 @@ class ESInit extends Command {
 
         /**
          * 模版参数
+         * 
+         * 注意下面的是json格式数据，用于发送到Elasticsearch，不要使用双斜杠注释；
          */
         $param1 = [
             'json' => [
-                // 该模版的作用范围（索引范围）； 
+                /* 该模版的作用范围（索引范围）； */
                 'template' => config('scout.elasticsearch.index'),
-                // 映射
+                /* 映射 */
                 'mappings' => [
-                    // 默认设置
+                    /* 默认设置 */
                     '_default_' => [
                         'dynamic_templates' => [
                             [
