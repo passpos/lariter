@@ -1,7 +1,6 @@
 <?php
 
 return [
-    
     /*
       |--------------------------------------------------------------------------
       | Default Search Engine
@@ -26,8 +25,7 @@ return [
       | "tenants" or applications sharing the same search infrastructure.
       |
      */
-    'prefix' => env('SCOUT_PREFIX', ''),
-    
+    'prefix'        => env('SCOUT_PREFIX', ''),
     /*
       |--------------------------------------------------------------------------
       | Queue Data Syncing
@@ -38,8 +36,7 @@ return [
       | all automatic data syncing will get queued for better performance.
       |
      */
-    'queue' => env('SCOUT_QUEUE', false),
-    
+    'queue'         => env('SCOUT_QUEUE', false),
     /*
       |--------------------------------------------------------------------------
       | Chunk Sizes
@@ -51,10 +48,9 @@ return [
       |
      */
     'chunk' => [
-        'searchable' => 500,
+        'searchable'   => 500,
         'unsearchable' => 500,
     ],
-    
     /*
       |--------------------------------------------------------------------------
       | Soft Deletes
@@ -65,8 +61,7 @@ return [
       | if your application still needs to search for the records later.
       |
      */
-    'soft_delete' => false,
-    
+    'soft_delete'   => false,
     /*
       |--------------------------------------------------------------------------
       | Algolia Configuration
@@ -78,14 +73,20 @@ return [
       |
      */
     'algolia' => [
-        'id' => env('ALGOLIA_APP_ID', ''),
+        'id'     => env('ALGOLIA_APP_ID', ''),
         'secret' => env('ALGOLIA_SECRET', ''),
     ],
-    
     'elasticsearch' => [
         'index' => env('ELASTICSEARCH_INDEX', 'lariter'),
         'hosts' => [
             env('ELASTICSEARCH_HOST', 'http://localhost:9602'),
+            [
+                'host'   => 'localhost',
+                'port'   => '9602',
+                'scheme' => 'http',
+//                'user'   => 'username',
+//                'pass'   => 'password!#$?*abc'
+            ]
         ],
     ],
 ];
