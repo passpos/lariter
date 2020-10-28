@@ -236,7 +236,7 @@ class PostController extends Controller {
         // 逻辑
         $query = request('query');
         $posts = Post::search($query)->paginate(3);
-
+        dd($posts);
         // 渲染
         return view('frontend.post.search', compact('query', 'posts'));
     }
