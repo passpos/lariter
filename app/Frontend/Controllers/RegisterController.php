@@ -3,7 +3,7 @@
 namespace App\Frontend\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mariadb\Frontend\User;
+use App\Models\Frontend\User;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller {

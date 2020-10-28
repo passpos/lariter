@@ -2,8 +2,8 @@
 
 namespace App\Backend\Controllers;
 
-use App\Mariadb\Backend\BackendUser;
-use App\Mariadb\Backend\BackendRole;
+use App\Models\Backend\BackendUser;
+use App\Models\Backend\BackendRole;
 
 class UserController extends Controller {
 

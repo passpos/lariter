@@ -2,8 +2,8 @@
 
 namespace App\Backend\Controllers;
 
-use App\Mariadb\Backend\BackendRole;
-use App\Mariadb\Backend\BackendPermission;
+use App\Models\Backend\BackendRole;
+use App\Models\Backend\BackendPermission;
 
 class RoleController extends Controller {
 

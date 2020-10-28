@@ -7,8 +7,8 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use App\Mariadb\BackendFrontend\Notice;
-use App\Mariadb\Frontend\User;
+use App\Models\BackendFrontend\Notice;
+use App\Models\Frontend\User;
 
 class SendMessage implements ShouldQueue
 {

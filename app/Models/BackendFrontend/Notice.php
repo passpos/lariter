@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Mariadb\BackendFrontend;
+namespace App\Models\BackendFrontend;
 
-use App\Mariadb\Model;
+use App\Models\Model;
 
 class Notice extends Model {
 

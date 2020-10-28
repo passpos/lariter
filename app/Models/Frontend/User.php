@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Mariadb\Frontend;
+namespace App\Models\Frontend;
 
-use App\Mariadb\Frontend\Fan;
+use App\Models\Frontend\Fan;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -44,15 +44,15 @@ class User extends Authenticatable {
      *   'fan_id'表示关注该用户的用户id
      */
     public function posts() {
-        return $this->hasMany('App\Mariadb\Frontend\Post', 'user_id', 'id');
+        return $this->hasMany('App\Models\Frontend\Post', 'user_id', 'id');
     }
 
     public function fans() {
-        return $this->hasMany('App\Mariadb\Frontend\Fan', 'star_id', 'id');
+        return $this->hasMany('App\Models\Frontend\Fan', 'star_id', 'id');
     }
 
     public function stars() {
-        return $this->hasMany('App\Mariadb\Frontend\Fan', 'fan_id', 'id');
+        return $this->hasMany('App\Models\Frontend\Fan', 'fan_id', 'id');
     }
 
     /**
@@ -100,7 +100,7 @@ class User extends Authenticatable {
      * 用户收到的通知
      */
     public function notices() {
-        return $this->belongsToMany('App\Mariadb\BackendFrontend\Notice', 'bf_notice_user', 'user_id', 'notice_id')
+        return $this->belongsToMany('App\Models\BackendFrontend\Notice', 'bf_notice_user', 'user_id', 'notice_id')
                         ->withPivot(['user_id', 'notice_id'])
                         ->withTimestamps();
     }

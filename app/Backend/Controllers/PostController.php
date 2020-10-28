@@ -2,7 +2,7 @@
 
 namespace App\Backend\Controllers;
 
-use App\Mariadb\Backend\BackendPost;
+use App\Models\Backend\BackendPost;
 
 class PostController extends Controller {
 

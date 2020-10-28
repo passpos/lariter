@@ -2,7 +2,7 @@
 
 namespace App\Frontend\Controllers;
 
-use App\Mariadb\Frontend\User;
+use App\Models\Frontend\User;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {

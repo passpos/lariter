@@ -8,7 +8,7 @@
 
 namespace App\Backend\Controllers;
 
-use App\Mariadb\BackendFrontend\Notice;
+use App\Models\BackendFrontend\Notice;
 use App\Jobs\SendMessage;
 
 /**

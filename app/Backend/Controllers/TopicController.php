@@ -8,7 +8,7 @@
 
 namespace App\Backend\Controllers;
 
-use App\Mariadb\Backend\BackendTopic;
+use App\Models\Backend\BackendTopic;
 
 /**
  * Description of TopicController

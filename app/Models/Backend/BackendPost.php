@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Mariadb\Backend;
+namespace App\Models\Backend;
 
-use App\Mariadb\Model;
+use App\Models\Model;
 
 // 对应表“posts”
 class BackendPost extends Model {
@@ -13,7 +13,7 @@ class BackendPost extends Model {
     protected $primaryKey = 'id';
     
     public function user() {
-        return $this->belongsTo('App\Mariadb\Backend\FrontendUser', 'user_id', 'id');
+        return $this->belongsTo('App\Models\Backend\FrontendUser', 'user_id', 'id');
     }
 
 }

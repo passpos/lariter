@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mariadb\Frontend;
+namespace App\Models\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
 

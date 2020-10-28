@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Mariadb\Backend;
+namespace App\Models\Backend;
 
-use App\Mariadb\Model;
+use App\Models\Model;
 
 class BackendRole extends Model {
 
@@ -16,7 +16,7 @@ class BackendRole extends Model {
      * @return relationship
      */
     public function permissions() {
-        return $this->belongsToMany('App\Mariadb\Backend\BackendPermission', 'backend_role_permission', 'role_id', 'permission_id')
+        return $this->belongsToMany('App\Models\Backend\BackendPermission', 'backend_role_permission', 'role_id', 'permission_id')
                         ->withPivot('role_id', 'permission_id')->withTimestamps();
     }
 

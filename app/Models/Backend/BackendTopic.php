@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Mariadb\Backend;
+namespace App\Models\Backend;
 
-use App\Mariadb\Model;
+use App\Models\Model;
 
 class BackendTopic extends Model {
 

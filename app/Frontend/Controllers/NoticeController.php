@@ -3,7 +3,7 @@
 namespace App\Frontend\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Mariadb\BackendFrontend\Notice;
+use App\Models\BackendFrontend\Notice;
 
 class NoticeController extends Controller {
 

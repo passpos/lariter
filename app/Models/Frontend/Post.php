@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mariadb\Frontend;
+namespace App\Models\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -65,7 +65,7 @@ class Post extends Model {
          *     使用$post->user->name访问具体的‘name’值；
          *     使用$post->user()访问一条数据对象（数组）；
          */
-        return $this->belongsTo('App\Mariadb\Frontend\User', 'user_id', 'id');
+        return $this->belongsTo('App\Models\Frontend\User', 'user_id', 'id');
     }
 
     /**
@@ -73,7 +73,7 @@ class Post extends Model {
      *   一篇文章有多个评论
      */
     public function comments() {
-        return $this->hasMany('App\Mariadb\Frontend\Comment')->orderBy('created_at', 'desc');
+        return $this->hasMany('App\Models\Frontend\Comment')->orderBy('created_at', 'desc');
     }
 
     /**
@@ -82,12 +82,12 @@ class Post extends Model {
      *   以user_id作为约束参数；
      */
     public function up($user_id) {
-        return $this->hasOne('App\Mariadb\Frontend\Up')->where('user_id', $user_id);
+        return $this->hasOne('App\Models\Frontend\Up')->where('user_id', $user_id);
     }
 
     // 文章获得的所有赞
     public function ups() {
-        return $this->hasMany('App\Mariadb\Frontend\Up', 'post_id', 'id');
+        return $this->hasMany('App\Models\Frontend\Up', 'post_id', 'id');
     }
 
     /**
@@ -95,7 +95,7 @@ class Post extends Model {
      *   一篇文章可以被投送发表到多个专题
      */
     public function postTopics() {
-        return $this->hasMany('App\Mariadb\Frontend\PostTopic', 'post_id', 'id');
+        return $this->hasMany('App\Models\Frontend\PostTopic', 'post_id', 'id');
     }
 
     /**

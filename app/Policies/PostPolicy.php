@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Mariadb\Frontend\User;
-use App\Mariadb\Frontend\Post;
+use App\Models\Frontend\User;
+use App\Models\Frontend\Post;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy

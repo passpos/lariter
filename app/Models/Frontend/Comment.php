@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mariadb\Frontend;
+namespace App\Models\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +12,7 @@ class Comment extends Model {
      * 一个评论只能关联到一篇文章所以用belongsTo()
      */
     public function post() {
-        return $this->belongsTo('App\Mariadb\Frontend\Post');
+        return $this->belongsTo('App\Models\Frontend\Post');
     }
     
     /**
@@ -21,7 +21,7 @@ class Comment extends Model {
      * 这里是一个评论被关联到一个作者，所以用belongsTo()
      */
     public function user() {
-        return $this->belongsTo('App\Mariadb\Frontend\User');
+        return $this->belongsTo('App\Models\Frontend\User');
     }
 
 }

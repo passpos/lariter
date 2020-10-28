@@ -2,9 +2,9 @@
 
 namespace App\Frontend\Controllers;
 
-use App\Mariadb\Frontend\Topic;
-use App\Mariadb\Frontend\Post;
-use App\Mariadb\Frontend\PostTopic;
+use App\Models\Frontend\Topic;
+use App\Models\Frontend\Post;
+use App\Models\Frontend\PostTopic;
 use Illuminate\Support\Facades\Auth;
 
 class TopicController extends Controller {

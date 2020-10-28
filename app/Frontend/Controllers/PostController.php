@@ -2,9 +2,9 @@
 
 namespace App\Frontend\Controllers;
 
-use App\Mariadb\Frontend\Post;
-use App\Mariadb\Frontend\Comment;
-use App\Mariadb\Frontend\Up;
+use App\Models\Frontend\Post;
+use App\Models\Frontend\Comment;
+use App\Models\Frontend\Up;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;

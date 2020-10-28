@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mariadb\Frontend;
+namespace App\Models\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,7 +27,7 @@ class Topic extends Model {
      *   post_topics是post与topic的多对多关系表；
      */
     public function posts() {
-        return $this->belongsToMany('App\Mariadb\Frontend\Post', 'post_topics', 'topic_id', 'post_id');
+        return $this->belongsToMany('App\Models\Frontend\Post', 'post_topics', 'topic_id', 'post_id');
     }
 
     /**
@@ -38,7 +38,7 @@ class Topic extends Model {
      * @param  string  $localKey
      */
     public function topicPosts() {
-        return $this->hasMany('App\Mariadb\Frontend\PostTopic', 'topic_id', 'id');
+        return $this->hasMany('App\Models\Frontend\PostTopic', 'topic_id', 'id');
     }
 
 }
