@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model as BaseModel;
  */
 class Model extends BaseModel{
 
+    // 指定数据库连接
     protected $connection = 'mysql';
     // 不可以注入的字段
     protected $guarded = [];
