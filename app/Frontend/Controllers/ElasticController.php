@@ -33,7 +33,7 @@ class ElasticController extends Controller {
          * - 
          */
         $url1 = config('scout.elasticsearch.hosts')[0] . '/_template/tmp';
-        // $client->delete($url1);
+        $client->delete($url1);
 
         /**
          * 模版参数
@@ -89,7 +89,7 @@ class ElasticController extends Controller {
         $client = new Client(['http_errors' => false]);
 
         $url2 = config('scout.elasticsearch.hosts')[0] . '/' . config('scout.elasticsearch.index');
-        // $client->delete($url2);
+        $client->delete($url2);
         $param2 = [
             'json' => [
                 'settings' => [
