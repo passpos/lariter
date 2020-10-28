@@ -55,7 +55,7 @@ class ESInit extends Command {
          * - 
          */
         $url1 = config('scout.elasticsearch.hosts')[0] . '/_template/tmp';
-        // $client->delete($url1);
+        $client->delete($url1);
 
         /**
          * 模版参数
