@@ -84,8 +84,8 @@ return [
                 'host'   => 'localhost',
                 'port'   => '9602',
                 'scheme' => 'http',
-//                'user'   => 'username',
-//                'pass'   => 'password!#$?*abc'
+                'user'   => 'elastic',
+                'pass'   => 'elasticpw'
             ]
         ],
     ],
