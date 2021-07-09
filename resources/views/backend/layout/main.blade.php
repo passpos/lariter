@@ -51,7 +51,7 @@
     </div>
     <!-- ./wrapper -->
 
-    <script src="/js/jquery-3.3.1/jquery.min.js"></script>
-    <script src="/js/my/backend.js"></script>
+    <script src="http://localhost/scripts/jquery-3.3.1/jquery.min.js"></script>
+    <script src="/scripts/my/backend.js"></script>
   </body>
 </html>

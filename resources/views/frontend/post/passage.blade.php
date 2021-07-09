@@ -2,9 +2,9 @@
 @section('style')
 <!-- Bootstrap core CSS -->
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<!--<link href="/css/bootstrap-4.1.3/bootstrap.min.css" rel="stylesheet">-->
+<!--<link src="http://localhost/styles/bootstrap-4.1.3/bootstrap.min.css" rel="stylesheet">-->
 <!-- Custom styles for this template -->
-<link rel="stylesheet" href="/css/blog.css">
+<link rel="stylesheet" href="/styles/blog.css">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -93,7 +93,7 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 -->
-<script type="text/javascript" src="/js/jquery-3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap-3.3.7/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/my/search.js"></script>
+<script type="text/javascript" src="http://localhost/scripts/jquery-3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/scripts/bootstrap-3.3.7/bootstrap.min.js"></script>
+<script type="text/javascript" src="/scripts/my/search.js"></script>
 @endsection
