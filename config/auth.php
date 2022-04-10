@@ -75,15 +75,15 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Mariadb\Frontend\User::class,
+            'model'  => App\Models\Frontend\User::class,
         ],
         'frontendusers' => [
             'driver' => 'eloquent',
-            'model' => App\Mariadb\Frontend\User::class,
+            'model'  => App\Models\Frontend\User::class,
         ],
         'backendusers' => [
             'driver' => 'eloquent',
-            'model' => App\Mariadb\Backend\BackendUser::class,
+            'model'  => App\Models\Backend\BackendUser::class,
         ],
     // 'users' => [
     //     'driver' => 'database',
