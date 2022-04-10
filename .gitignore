@@ -14,9 +14,3 @@ yarn-error.log
 /public/css
 /public/font
 /public/img
-/public/js/bootstrap-*
-/public/js/jquery-*
-/public/js/kindeditor/*
-/public/js/NKeditor*
-/public/js/wangEditor-*
-/public/js/adminlte*
